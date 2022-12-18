@@ -10,3 +10,28 @@
 @import url("../blocks/header/header.css");
 /*  HEADER LOGO */
 @import url("../blocks/header/__logo/header__logo.css");
+/*-------------------------------------------------------*/
+
+/*  CONTAINER   */
+@import url("../blocks/container/container.css");
+
+/*-------------------------------------------------------*/
+/*  WRAP    */
+@import url("../blocks/wrap/wrap.css");
+/*  WRAP PROFILE   */
+@import url("../blocks/wrap-profile/wrap-profile.css");
+/*  WRAP-EDIT-PROFILE   */
+@import url("../blocks/wrap-edit-profile/wrap-edit-profile.css");
+
+/*  PROFILE */
+@import url("../blocks/profile/profile.css");
+/*  PROFILE IMAGE   */
+@import url("../blocks/profile/__image/profile__image.css");
+/*  PROFILE NAME    */
+@import url("../blocks/profile/__name/profile__name.css");
+/*  PROFILE INFO    */
+@import url("../blocks/profile/__about-me/profile__about-me.css");
+/*  PROFILE EDIT-BUTTON */
+@import url("../blocks/profile/__edit-button/profile__edit-button.css");
+/*  PROFILE ADD-BUTTON  */
+@import url("../blocks/profile/__add-button/profile__add-button.css");

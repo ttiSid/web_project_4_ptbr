@@ -1,0 +1,10 @@
+.wrap-edit-profile {
+  display: flex;
+  gap: 1.12rem;
+}
+
+@media screen and (max-width: 767px) {
+  .wrap-edit-profile {
+    gap: 0.62rem;
+  }
+}

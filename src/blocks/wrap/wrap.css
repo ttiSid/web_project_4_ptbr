@@ -1,0 +1,15 @@
+.wrap {
+  display: flex;
+  gap: 1.12rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .wrap {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.25rem;
+  }
+}
