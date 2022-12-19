@@ -1,0 +1,9 @@
+.picture-card__description {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 1.2;
+}

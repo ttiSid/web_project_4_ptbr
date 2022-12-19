@@ -1,0 +1,8 @@
+.card-wrap {
+  display: flex;
+  max-width: 246px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.56rem 0px 1.93rem;
+}

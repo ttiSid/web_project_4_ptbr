@@ -22,6 +22,8 @@
 @import url("../blocks/wrap-profile/wrap-profile.css");
 /*  WRAP-EDIT-PROFILE   */
 @import url("../blocks/wrap-edit-profile/wrap-edit-profile.css");
+/*  CARD-WRAP   */
+@import url("../blocks/card-wrap/card-wrap.css");
 
 /*  PROFILE */
 @import url("../blocks/profile/profile.css");
@@ -35,3 +37,17 @@
 @import url("../blocks/profile/__edit-button/profile__edit-button.css");
 /*  PROFILE ADD-BUTTON  */
 @import url("../blocks/profile/__add-button/profile__add-button.css");
+
+/*  PICTURES */
+@import url("../blocks/pictures/pictures.css");
+/*  PICTURES-CONTAINER*/
+@import url("../blocks/pictures-container/pictures-container.css");
+/*  PICTURE-CARD    */
+@import url("../blocks/picture-card/picture-card.css");
+/*  PICTURE-CARD__IMAGE */
+@import url("../blocks/picture-card/__image/picture-card__image.css");
+/*  PICTURE-CARD__DESCRIPTION    */
+@import url("../blocks/picture-card/__description/picture-card__description.css");
+/*  PICTURE-CARD__LIKE-BTN  */
+@import url("../blocks/picture-card/__like-btn/picture-card__like-btn.css");
+@import url("../blocks/picture-card/__like-btn/_active/picture-card__like-btn_active.css");
