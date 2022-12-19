@@ -14,8 +14,8 @@
 
 /*  CONTAINER   */
 @import url("../blocks/container/container.css");
-
 /*-------------------------------------------------------*/
+
 /*  WRAP    */
 @import url("../blocks/wrap/wrap.css");
 /*  WRAP PROFILE   */
@@ -24,6 +24,7 @@
 @import url("../blocks/wrap-edit-profile/wrap-edit-profile.css");
 /*  CARD-WRAP   */
 @import url("../blocks/card-wrap/card-wrap.css");
+/*-------------------------------------------------------*/
 
 /*  PROFILE */
 @import url("../blocks/profile/profile.css");
@@ -37,6 +38,7 @@
 @import url("../blocks/profile/__edit-button/profile__edit-button.css");
 /*  PROFILE ADD-BUTTON  */
 @import url("../blocks/profile/__add-button/profile__add-button.css");
+/*-------------------------------------------------------*/
 
 /*  PICTURES */
 @import url("../blocks/pictures/pictures.css");
@@ -50,4 +52,11 @@
 @import url("../blocks/picture-card/__description/picture-card__description.css");
 /*  PICTURE-CARD__LIKE-BTN  */
 @import url("../blocks/picture-card/__like-btn/picture-card__like-btn.css");
+/*  PICTURE-CARD__LIKE-BTN_ACTIVE  */
 @import url("../blocks/picture-card/__like-btn/_active/picture-card__like-btn_active.css");
+/*-------------------------------------------------------*/
+
+/*  FOOTER  */
+@import url("../blocks/footer/footer.css");
+/*  FOOTER-COPYRIGHT    */
+@import url("../blocks/footer/__copyright/footer__copyright.css");
