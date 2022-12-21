@@ -56,8 +56,8 @@
 @import url("../blocks/picture-card/__like-btn/_active/picture-card__like-btn_active.css");
 /*-------------------------------------------------------*/
 
-/*  OVERLAY ACTIVE  */
-@import url("../blocks/overlay/_active/overlay_active.css");
+/*  OVERLAY DISABLE  */
+@import url("../blocks/overlay/_disable/overlay_disable.css");
 /*  OVERLAY */
 @import url("../blocks/overlay/overlay.css");
 

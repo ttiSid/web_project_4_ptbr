@@ -123,25 +123,25 @@
         </footer>
       </main>
     </div>
-    <div class="overlay overlay_active">
-      <div class="modal modal_active">
-        <div class="modal-container">
-          <button class="modal__close-btn"></button>
+    <div class="overlay_disable">
+      <div class="modal">
+        <form action="#" class="modal-container">
+          <button class="modal__close-btn" type="button"></button>
           <h2 class="modal__title">Editar perfil</h2>
           <input
-            class="modal__input-field"
+            class="modal__input-field input-field-name"
             type="text"
             name="profile-name"
             id="profile-name"
           />
           <input
-            class="modal__input-field"
+            class="modal__input-field input-field-description"
             type="text"
             name="profile-description"
             id="profile-description"
           />
-          <button class="modal__submit-btn">Salvar</button>
-        </div>
+          <input class="modal__submit-btn" value="Salvar" type="submit" />
+        </form>
       </div>
     </div>
     <script src="./js/modal.js"></script>
