@@ -1,0 +1,12 @@
+.modal-container {
+  width: 358px;
+  display: flex;
+  flex-direction: column;
+  gap: 3.12rem;
+}
+
+@media screen and (max-width: 767px) {
+  .modal-container {
+    max-width: 238px;
+  }
+}

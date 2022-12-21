@@ -1,0 +1,18 @@
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  width: 430px;
+  height: 330px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15);
+}
+
+@media screen and (max-width: 767px) {
+  .modal {
+    max-width: 282px;
+  }
+}

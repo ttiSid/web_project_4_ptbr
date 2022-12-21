@@ -118,10 +118,32 @@
             </li>
           </ul>
         </section>
+        <footer class="footer">
+          <p class="footer__copyright">&copy;2022. Sidney Sudatti</p>
+        </footer>
       </main>
-      <footer class="footer">
-        <p class="footer__copyright">&copy;2022. Sidney Sudatti</p>
-      </footer>
     </div>
+    <div class="overlay overlay_active">
+      <div class="modal modal_active">
+        <div class="modal-container">
+          <button class="modal__close-btn"></button>
+          <h2 class="modal__title">Editar perfil</h2>
+          <input
+            class="modal__input-field"
+            type="text"
+            name="profile-name"
+            id="profile-name"
+          />
+          <input
+            class="modal__input-field"
+            type="text"
+            name="profile-description"
+            id="profile-description"
+          />
+          <button class="modal__submit-btn">Salvar</button>
+        </div>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>

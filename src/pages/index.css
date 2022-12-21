@@ -56,6 +56,24 @@
 @import url("../blocks/picture-card/__like-btn/_active/picture-card__like-btn_active.css");
 /*-------------------------------------------------------*/
 
+/*  OVERLAY ACTIVE  */
+@import url("../blocks/overlay/_active/overlay_active.css");
+/*  OVERLAY */
+@import url("../blocks/overlay/overlay.css");
+
+/*  MODAL CONTAINER */
+@import url("../blocks/modal-container/modal-container.css");
+/*  MODAL   */
+@import url("../blocks/modal/modal.css");
+/*  MODAL CLOSE-BTN */
+@import url("../blocks/modal/__close-btn/modal__close-btn.css");
+/*  MODAL INPUT-FIELD   */
+@import url("../blocks/modal/__input-field/modal__input-field.css");
+/*  MODAL TITLE */
+@import url("../blocks/modal/__title/modal__title.css");
+/*  MODAL SUBMIT BTN   */
+@import url("../blocks/modal/__submit-btn/modal__submit-btn.css");
+
 /*  FOOTER  */
 @import url("../blocks/footer/footer.css");
 /*  FOOTER-COPYRIGHT    */

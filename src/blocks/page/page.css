@@ -1,10 +1,10 @@
 body {
   background-color: #000000;
+  font-family: "Inter", sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 .page {
-  font-family: "Inter", sans-serif;
   max-width: 880px;
   margin: 0 auto;
-  text-rendering: optimizeLegibility;
 }
