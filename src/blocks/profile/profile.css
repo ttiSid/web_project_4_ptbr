@@ -10,5 +10,6 @@
   .profile {
     flex-direction: column;
     gap: 1.64rem;
+    padding: 2.25rem 0;
   }
 }
