@@ -1,16 +1,11 @@
-# Projeto 4:  EUA Afora
+# EUA Afora
 
-### Visão geral
+## Descrição do projeto:
 
-* Figma
-* Imagens
+O projeto teve como intuíto praticar e consolidar os conceitos de responsividade aprendidos no Bootcamp da Practicum, bem como a manipulação de elementos do DOM através de Javascript.
 
-**Figma**
+Para a construção da página, utilizei HTML com a semântica apropriada, juntamente com boas práticas de CSS.
 
-* [Link para o projeto no Figma](https://www.figma.com/file/XfB6BSINvliub43JgKza1e/WEB.-Sprint-4.-Around-The-U.S.-desktop-%2B-mobile-pt)
+Utilizei a metodologia BEM para a nomeação de classes e estruturação de arquivos.
 
-**Imagens**
-
-A maneira como você fará isso no trabalho é exportando imagens diretamente do Figma — recomendamos fazer isso para praticar mais. Não se esqueça de otimizá-los [aqui](https://tinypng.com/), para que seu projeto carregue mais rápido.
-
-Divirta-se com JavaScript!
+Confira o projeto através do [link](https://ttisid.github.io/web_project_4_ptbr/src/).
