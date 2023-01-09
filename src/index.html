@@ -32,12 +32,12 @@
         </section>
         <section class="pictures">
           <ul class="pictures-container">
-            <li class="picture-card">
+            <!-- <li class="picture-card">
               <img
                 class="picture-card__image"
                 src="./img/kirill-pershin-1088404-unsplash-1.jpg"
                 alt="Vale de Yosemite"
-              />
+                />
               <div class="card-wrap">
                 <h2 class="picture-card__description">Vale de Yosemite</h2>
                 <button class="picture-card__like-btn"></button>
@@ -45,10 +45,10 @@
             </li>
             <li class="picture-card">
               <img
-                class="picture-card__image"
+              class="picture-card__image"
                 src="./img/kirill-pershin-1404681-unsplash-2.jpg"
                 alt="Lago Louise"
-              />
+                />
               <div class="card-wrap">
                 <h2 class="picture-card__description">Lago Louise</h2>
                 <button class="picture-card__like-btn"></button>
@@ -56,11 +56,11 @@
             </li>
             <li class="picture-card">
               <img
-                class="picture-card__image"
+              class="picture-card__image"
                 src="./img/kirill-pershin-1556355-unsplash-3.jpg"
                 alt="Montanhas"
-              />
-              <div class="card-wrap">
+                />
+                <div class="card-wrap">
                 <h2 class="picture-card__description">Montanhas Care...</h2>
                 <button class="picture-card__like-btn"></button>
               </div>
@@ -78,9 +78,9 @@
             </li>
             <li class="picture-card">
               <img
-                class="picture-card__image"
-                src="./img/kirill-pershin-1556355-unsplash-(1)-5.jpg"
-                alt="Vanoise Nationa..."
+              class="picture-card__image"
+              src="./img/kirill-pershin-1556355-unsplash-(1)-5.jpg"
+              alt="Vanoise Nationa..."
               />
               <div class="card-wrap">
                 <h2 class="picture-card__description">Vanoise Nationa...</h2>
@@ -89,15 +89,28 @@
             </li>
             <li class="picture-card">
               <img
-                class="picture-card__image"
-                src="./img/kirill-pershin-1088404-unsplash-6.jpg"
-                alt="Lago di Braies"
+              class="picture-card__image"
+              src="./img/kirill-pershin-1088404-unsplash-6.jpg"
+              alt="Lago di Braies"
               />
               <div class="card-wrap">
                 <h2 class="picture-card__description">Lago di Braies</h2>
                 <button class="picture-card__like-btn"></button>
               </div>
-            </li>
+            </li> -->
+            <template id="card">
+              <li class="picture-card">
+                <img
+                  class="picture-card__image"
+                  src="./img/kirill-pershin-1088404-unsplash-6.jpg"
+                  alt="Lago di Braies"
+                />
+                <div class="card-wrap">
+                  <h2 class="picture-card__description">Lago di Braies</h2>
+                  <button class="picture-card__like-btn"></button>
+                </div>
+              </li>
+            </template>
           </ul>
         </section>
         <footer class="footer">
@@ -127,5 +140,6 @@
       </div>
     </div>
     <script src="./js/modal.js"></script>
+    <script src="./js/initial-cards.js"></script>
   </body>
 </html>
