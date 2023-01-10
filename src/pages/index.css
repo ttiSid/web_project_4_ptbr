@@ -54,6 +54,8 @@
 @import url("../blocks/picture-card/__like-btn/picture-card__like-btn.css");
 /*  PICTURE-CARD__LIKE-BTN_ACTIVE  */
 @import url("../blocks/picture-card/__like-btn/_active/picture-card__like-btn_active.css");
+/*  PICTURE-CARD__DELETE-BTN*/
+@import url("../blocks/picture-card/__delete-btn/picture-card__delete-btn.css");
 /*-------------------------------------------------------*/
 
 /*  OVERLAY DISABLE  */

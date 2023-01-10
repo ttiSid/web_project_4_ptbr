@@ -1,4 +1,4 @@
-const initialCards = [
+const cards = [
   {
     name: "Vale de Yosemite",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
@@ -25,7 +25,7 @@ const initialCards = [
   },
 ];
 
-initialCards.forEach(function (item, index) {
+cards.forEach(function (item, index) {
   const card = document.querySelector("#card").content;
   const cardContainer = document.querySelector(".pictures-container");
   const cardElement = card.querySelector(".picture-card").cloneNode(true);
