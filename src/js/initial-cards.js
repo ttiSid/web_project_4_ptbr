@@ -36,6 +36,7 @@ initialCards.forEach(function (item, index) {
   cardElement.querySelector(".picture-card__image").src = cardLink;
   cardElement.querySelector(".picture-card__description").textContent =
     cardName;
+  cardElement.querySelector(".picture-card__image").alt = cardName + " image";
 
   return cardContainer.append(cardElement);
 });
