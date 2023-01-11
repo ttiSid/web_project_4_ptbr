@@ -27,7 +27,7 @@
               </div>
               <h2 class="profile__about-me">Explorar</h2>
             </div>
-            <button class="profile__add-button"></button>
+            <button class="profile__add-card-button"></button>
           </div>
         </section>
         <section class="pictures">
@@ -49,27 +49,29 @@
         </footer>
       </main>
     </div>
-    <div class="overlay_disable">
-      <div class="modal">
-        <form action="#" class="modal-container">
-          <button class="modal__close-btn" type="button"></button>
-          <h2 class="modal__title">Editar perfil</h2>
-          <input
-            class="modal__input-field input-field-name"
-            type="text"
-            name="profile-name"
-            id="profile-name"
-          />
-          <input
-            class="modal__input-field input-field-description"
-            type="text"
-            name="profile-description"
-            id="profile-description"
-          />
-          <input class="modal__submit-btn" value="Salvar" type="submit" />
-        </form>
+    <template id="modal">
+      <div class="overlay">
+        <div class="modal">
+          <form action="#" class="modal-container">
+            <button class="modal__close-btn" type="button"></button>
+            <h2 class="modal__title">Editar perfil</h2>
+            <input
+              class="modal__input-field input-field-name"
+              type="text"
+              name="profile-name"
+              id="profile-name"
+            />
+            <input
+              class="modal__input-field input-field-description"
+              type="text"
+              name="profile-description"
+              id="profile-description"
+            />
+            <input class="modal__submit-btn" value="Salvar" type="submit" />
+          </form>
+        </div>
       </div>
-    </div>
+    </template>
     <script src="./js/modal.js"></script>
     <script src="./js/initial-cards.js"></script>
     <script src="./js/edit-card.js"></script>
