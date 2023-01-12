@@ -29,7 +29,6 @@ cards.forEach(function (item, index) {
   const card = document.querySelector("#card").content;
   const cardContainer = document.querySelector(".pictures-container");
   const cardElement = card.querySelector(".picture-card").cloneNode(true);
-
   const cardLink = item.link;
   const cardName = item.name;
 

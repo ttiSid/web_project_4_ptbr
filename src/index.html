@@ -49,9 +49,9 @@
         </footer>
       </main>
     </div>
-    <div class="overlay_disable">
+    <div class="general-modal modal-profile overlay_disable">
       <div class="modal">
-        <form action="#" class="modal-container">
+        <form action="#" class="modal-container form-profile">
           <button class="modal__close-btn" type="button"></button>
           <h2 class="modal__title">Editar perfil</h2>
           <input
@@ -65,6 +65,29 @@
             type="text"
             name="profile-description"
             id="profile-description"
+          />
+          <input class="modal__submit-btn" value="Salvar" type="submit" />
+        </form>
+      </div>
+    </div>
+    <div class="general-modal modal-card overlay_disable">
+      <div class="modal">
+        <form action="#" class="modal-container form-card">
+          <button class="modal__close-btn" type="button"></button>
+          <h2 class="modal__title">New place</h2>
+          <input
+            class="modal__input-field input-field-title"
+            type="text"
+            name="card-name"
+            id="card-name"
+            placeholder="Title"
+          />
+          <input
+            class="modal__input-field input-field-url"
+            type="text"
+            name="card-url"
+            id="card-url"
+            placeholder="Image URL"
           />
           <input class="modal__submit-btn" value="Salvar" type="submit" />
         </form>
