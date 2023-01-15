@@ -76,19 +76,35 @@ function createCard(item) {
   cardElement.querySelector(".picture-card__description").textContent =
     cardName;
   cardElement.querySelector(".picture-card__image").alt = cardName + " image";
-  modalCard.classList.remove("overlay");
+  cardElement
+    .querySelector(".picture-card__image")
+    .addEventListener("click", function () {
+      const popup = document.querySelector("#popup").content;
+      const popupElement = popup
+        .querySelector(".popup-container")
+        .cloneNode(true);
+      popupElement.querySelector(".popup__image").src = cardLink;
+      popupElement.querySelector(".popup__image").alt = cardName + " image";
+      popupElement.querySelector(".popup__title").textContent = cardName;
+      const btnCloseModal = popupElement.querySelector(".popup__close-buttom");
+      btnCloseModal.addEventListener("click", () => {
+        popupElement.remove();
+      });
+      popupElement.classList.add("overlay");
+
+      return cardContainer.append(popupElement);
+    });
+
   return cardContainer.append(cardElement);
 }
 
-/*----  Abrindo o modal para mudança do perfil    ----*/
+/*----  Enviando dados de perfil via formulário    ----*/
 
 editBtn.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = descriptionProfile.textContent;
   modalProfile.classList.add("overlay");
 });
-
-/*----  Enviando dados de perfil via formulário    ----*/
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -127,8 +143,27 @@ function handleCardFormSubmit(evt) {
   cardElement.querySelector(".picture-card__description").textContent =
     cardName;
   cardElement.querySelector(".picture-card__image").alt = cardName + " image";
-  modalCard.classList.remove("overlay");
 
+  cardElement
+    .querySelector(".picture-card__image")
+    .addEventListener("click", function () {
+      const popup = document.querySelector("#popup").content;
+      const popupElement = popup
+        .querySelector(".popup-container")
+        .cloneNode(true);
+      popupElement.querySelector(".popup__image").src = cardLink;
+      popupElement.querySelector(".popup__image").alt = cardName + " image";
+      popupElement.querySelector(".popup__title").textContent = cardName;
+      const btnCloseModal = popupElement.querySelector(".popup__close-buttom");
+      btnCloseModal.addEventListener("click", () => {
+        popupElement.remove();
+      });
+      popupElement.classList.add("overlay");
+
+      return cardContainer.append(popupElement);
+    });
+
+  modalCard.classList.remove("overlay");
   cardContainer.prepend(cardElement);
 }
 

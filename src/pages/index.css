@@ -59,7 +59,7 @@
 /*-------------------------------------------------------*/
 
 /*  OVERLAY DISABLE  */
-@import url("../blocks/overlay/_disable/overlay_disable.css");
+@import url("../blocks/overlay/-disable/overlay-disable.css");
 /*  OVERLAY */
 @import url("../blocks/overlay/overlay.css");
 
@@ -75,6 +75,15 @@
 @import url("../blocks/modal/__title/modal__title.css");
 /*  MODAL SUBMIT BTN   */
 @import url("../blocks/modal/__submit-btn/modal__submit-btn.css");
+
+/*  POPUP   */
+@import url("../blocks/popup/popup.css");
+/*  POPUP ELEMENT   */
+@import url("../blocks/popup-element/popup-element.css");
+/*  POPUP NAME  */
+@import url("../blocks/popup/__title/popup__title.css");
+/*  POPUP IMG   */
+@import url("../blocks/popup/__image/popup__image.css");
 
 /*  FOOTER  */
 @import url("../blocks/footer/footer.css");
