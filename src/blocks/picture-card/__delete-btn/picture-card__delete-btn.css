@@ -2,6 +2,7 @@
   background-image: url("../../../img/icons/trash-icon.svg");
   background-color: transparent;
   background-position: center;
+  background-repeat: no-repeat;
   border: none;
   cursor: pointer;
   height: 19.3px;
