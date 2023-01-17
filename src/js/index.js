@@ -26,21 +26,21 @@ const cards = [
 ];
 
 /*  Transformando os elementos em objetos */
-let editBtn = document.querySelector(".profile__edit-button");
-let generalModal = document.querySelectorAll(".general-modal");
-let modalProfile = document.querySelector(".modal-profile");
-let modalCard = document.querySelector(".modal-card");
-let formProfile = document.querySelector(".form-profile");
-let formCard = document.querySelector(".form-card");
-let btnSubmit = document.querySelector(".modal__submit-btn");
-let nameInput = document.querySelector(".input-field-name");
-let descriptionInput = document.querySelector(".input-field-description");
-let titleInput = document.querySelector(".input-field-title");
-let urlInput = document.querySelector(".input-field-url");
-let profileName = document.querySelector(".profile__name");
-let descriptionProfile = document.querySelector(".profile__about-me");
-let addCardButton = document.querySelector(".profile__add-card-button");
-let btnCloseModal = document
+const editBtn = document.querySelector(".profile__edit-button");
+const generalModal = document.querySelectorAll(".general-modal");
+const modalProfile = document.querySelector(".modal-profile");
+const modalCard = document.querySelector(".modal-card");
+const formProfile = document.querySelector(".form-profile");
+const formCard = document.querySelector(".form-card");
+const btnSubmit = document.querySelector(".modal__submit-btn");
+const nameInput = document.querySelector(".input-field-name");
+const descriptionInput = document.querySelector(".input-field-description");
+const titleInput = document.querySelector(".input-field-title");
+const urlInput = document.querySelector(".input-field-url");
+const profileName = document.querySelector(".profile__name");
+const descriptionProfile = document.querySelector(".profile__about-me");
+const addCardButton = document.querySelector(".profile__add-card-button");
+const btnCloseModal = document
   .querySelectorAll(".modal__close-btn")
   .forEach(function (closeButton) {
     closeButton.addEventListener("click", () => {
