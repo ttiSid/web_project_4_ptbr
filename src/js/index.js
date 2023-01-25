@@ -86,11 +86,22 @@ function createCard(item) {
       popupElement.querySelector(".popup__image").src = cardLink;
       popupElement.querySelector(".popup__image").alt = cardName + " image";
       popupElement.querySelector(".popup__title").textContent = cardName;
+      popupElement.classList.add("overlay");
       const btnCloseModal = popupElement.querySelector(".popup__close-buttom");
       btnCloseModal.addEventListener("click", () => {
         popupElement.remove();
       });
-      popupElement.classList.add("overlay");
+      window.addEventListener("keydown", (evt) => {
+        if (evt.key === "Escape") {
+          popupElement.remove();
+        }
+      });
+
+      popupElement.addEventListener("click", (evt) => {
+        if (evt.target.classList.contains("overlay")) {
+          evt.target.remove(popupElement);
+        }
+      });
 
       return cardContainer.append(popupElement);
     });
@@ -104,6 +115,16 @@ editBtn.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = descriptionProfile.textContent;
   modalProfile.classList.add("overlay");
+  window.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      modalProfile.classList.remove("overlay");
+    }
+  });
+  modalProfile.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("overlay")) {
+      evt.target.classList.remove("overlay");
+    }
+  });
 });
 
 function handleProfileFormSubmit(evt) {
@@ -119,6 +140,16 @@ formProfile.addEventListener("submit", handleProfileFormSubmit);
 
 addCardButton.addEventListener("click", () => {
   modalCard.classList.add("overlay");
+  window.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      modalCard.classList.remove("overlay");
+    }
+  });
+  modalCard.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("overlay")) {
+      evt.target.classList.remove("overlay");
+    }
+  });
 });
 
 function handleCardFormSubmit(evt) {
@@ -158,6 +189,19 @@ function handleCardFormSubmit(evt) {
       btnCloseModal.addEventListener("click", () => {
         popupElement.remove();
       });
+
+      window.addEventListener("keydown", (evt) => {
+        if (evt.key === "Escape") {
+          popupElement.remove();
+        }
+      });
+
+      popupElement.addEventListener("click", (evt) => {
+        if (evt.target.classList.contains("overlay")) {
+          evt.target.remove(popupElement);
+        }
+      });
+
       popupElement.classList.add("overlay");
 
       return cardContainer.append(popupElement);
