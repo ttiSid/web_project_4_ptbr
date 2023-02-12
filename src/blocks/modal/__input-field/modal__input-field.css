@@ -7,3 +7,7 @@
   height: 17px;
   font-size: 0.87rem;
 }
+
+.modal__input-field:invalid {
+  border-bottom: 1px solid red;
+}

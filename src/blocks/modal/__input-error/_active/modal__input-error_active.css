@@ -1,0 +1,6 @@
+.modal__input-error_active {
+  font-size: 12px;
+  display: block;
+  margin-top: 0.4rem;
+  color: red;
+}

@@ -71,10 +71,18 @@
 @import url("../blocks/modal/__close-btn/modal__close-btn.css");
 /*  MODAL INPUT-FIELD   */
 @import url("../blocks/modal/__input-field/modal__input-field.css");
+/*  MODAL INPUT-ERROR*/
+@import url("../blocks/modal/__input-error/modal__input-error.css");
+/*  MODAL INPUT-ERROR-ACTIVE*/
+@import url("../blocks/modal/__input-error/_active/modal__input-error_active.css");
 /*  MODAL TITLE */
 @import url("../blocks/modal/__title/modal__title.css");
+/*  MODAL CONTAINER */
+@import url("../blocks/modal/__container/modal__container.css");
 /*  MODAL SUBMIT BTN   */
 @import url("../blocks/modal/__submit-btn/modal__submit-btn.css");
+/*  MODAL SUBMIT BTN DISABLED*/
+@import url("../blocks/modal/__submit-btn/_inactive/modal__submit-btn_inactive.css");
 
 /*  POPUP   */
 @import url("../blocks/popup/popup.css");

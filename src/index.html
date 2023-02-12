@@ -45,7 +45,7 @@
             <template id="popup">
               <div class="popup-container">
                 <div class="popup-element">
-                  <button class="modal__close-btn popup__close-buttom"></button>
+                  <button class="modal__close-btn popup__close-btn"></button>
                   <img class="popup__image" src="#" alt="" />
                   <h2 class="picture-card__description popup__title"></h2>
                 </div>
@@ -60,48 +60,77 @@
     </div>
     <div class="general-modal modal-profile overlay-disable">
       <div class="modal">
-        <form action="#" class="modal-container form-profile">
+        <form action="#" class="modal-container form form-profile" novalidate>
           <button class="modal__close-btn" type="button"></button>
           <h2 class="modal__title">Editar perfil</h2>
-          <input
-            class="modal__input-field input-field-name"
-            type="text"
-            name="profile-name"
-            id="profile-name"
-          />
-          <input
-            class="modal__input-field input-field-description"
-            type="text"
-            name="profile-description"
-            id="profile-description"
-          />
-          <input class="modal__submit-btn" value="Salvar" type="submit" />
+          <div class="modal__container">
+            <div>
+              <input
+                class="modal__input-field input-field-name"
+                type="text"
+                name="profile-name"
+                id="profile-name"
+                minlength="2"
+                maxlength="40"
+                required
+              />
+              <span class="modal__input-error profile-name-error"></span>
+            </div>
+            <div>
+              <input
+                class="modal__input-field input-field-description"
+                type="text"
+                name="profile-description"
+                id="profile-description"
+                minlength="2"
+                maxlength="200"
+                required
+              />
+              <span class="modal__input-error profile-description-error"></span>
+            </div>
+            <input
+              class="modal__submit-btn modal__submit-btn_error"
+              value="Salvar"
+              type="submit"
+            />
+          </div>
         </form>
       </div>
     </div>
     <div class="general-modal modal-card overlay-disable">
       <div class="modal">
-        <form action="#" class="modal-container form-card">
+        <form action="#" class="modal-container form form-card" novalidate>
           <button class="modal__close-btn" type="button"></button>
           <h2 class="modal__title">New place</h2>
-          <input
-            class="modal__input-field input-field-title"
-            type="text"
-            name="card-name"
-            id="card-name"
-            placeholder="Title"
-          />
-          <input
-            class="modal__input-field input-field-url"
-            type="text"
-            name="card-url"
-            id="card-url"
-            placeholder="Image URL"
-          />
+          <div>
+            <input
+              class="modal__input-field input-field-title"
+              type="text"
+              name="card-name"
+              id="card-name"
+              placeholder="Title"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="modal__input-error card-name-error"></span>
+          </div>
+          <div>
+            <input
+              class="modal__input-field input-field-url"
+              type="url"
+              name="card-url"
+              id="card-url"
+              placeholder="Image URL"
+              required
+            />
+            <span class="modal__input-error card-url-error"></span>
+          </div>
           <input class="modal__submit-btn" value="Salvar" type="submit" />
         </form>
       </div>
     </div>
     <script src="./js/index.js"></script>
+    <script src="./js/validate.js"></script>
   </body>
 </html>

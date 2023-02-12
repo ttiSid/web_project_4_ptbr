@@ -33,8 +33,8 @@ const modalCard = document.querySelector(".modal-card");
 const formProfile = document.querySelector(".form-profile");
 const formCard = document.querySelector(".form-card");
 const btnSubmit = document.querySelector(".modal__submit-btn");
-const nameInput = document.querySelector(".input-field-name");
-const descriptionInput = document.querySelector(".input-field-description");
+const nameInput = formProfile.querySelector(".input-field-name");
+const descriptionInput = formProfile.querySelector(".input-field-description");
 const titleInput = document.querySelector(".input-field-title");
 const urlInput = document.querySelector(".input-field-url");
 const profileName = document.querySelector(".profile__name");
@@ -87,7 +87,7 @@ function createCard(item) {
       popupElement.querySelector(".popup__image").alt = cardName + " image";
       popupElement.querySelector(".popup__title").textContent = cardName;
       popupElement.classList.add("overlay");
-      const btnCloseModal = popupElement.querySelector(".popup__close-buttom");
+      const btnCloseModal = popupElement.querySelector(".popup__close-btn");
       btnCloseModal.addEventListener("click", () => {
         popupElement.remove();
       });
@@ -185,7 +185,7 @@ function handleCardFormSubmit(evt) {
       popupElement.querySelector(".popup__image").src = cardLink;
       popupElement.querySelector(".popup__image").alt = cardName + " image";
       popupElement.querySelector(".popup__title").textContent = cardName;
-      const btnCloseModal = popupElement.querySelector(".popup__close-buttom");
+      const btnCloseModal = popupElement.querySelector(".popup__close-btn");
       btnCloseModal.addEventListener("click", () => {
         popupElement.remove();
       });
