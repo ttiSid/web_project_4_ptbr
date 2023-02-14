@@ -54,7 +54,7 @@ cards.forEach(function (item, index) {
   createCard(item);
 });
 
-/*----  Criando    ----*/
+/*----  Função para criar o card   ----*/
 function createCard(item) {
   const card = document.querySelector("#card").content;
   const cardContainer = document.querySelector(".pictures-container");
@@ -76,6 +76,9 @@ function createCard(item) {
   cardElement.querySelector(".picture-card__description").textContent =
     cardName;
   cardElement.querySelector(".picture-card__image").alt = cardName + " image";
+
+  /*  Evento de click para abrir o popup da imagem */
+
   cardElement
     .querySelector(".picture-card__image")
     .addEventListener("click", function () {
@@ -87,21 +90,30 @@ function createCard(item) {
       popupElement.querySelector(".popup__image").alt = cardName + " image";
       popupElement.querySelector(".popup__title").textContent = cardName;
       popupElement.classList.add("overlay");
+
       const btnCloseModal = popupElement.querySelector(".popup__close-btn");
-      btnCloseModal.addEventListener("click", () => {
+
+      btnCloseModal.addEventListener("click", closeModal);
+      function closeModal(evt) {
         popupElement.remove();
-      });
-      window.addEventListener("keydown", (evt) => {
+        btnCloseModal.removeEventListener("click", closeModal);
+      }
+
+      window.addEventListener("keydown", removePopupWithEscape);
+      function removePopupWithEscape(evt) {
         if (evt.key === "Escape") {
           popupElement.remove();
+          window.removeEventListener("keydown", removePopupWithEscape);
         }
-      });
+      }
 
-      popupElement.addEventListener("click", (evt) => {
+      popupElement.addEventListener("click", removePopupWithClickOut);
+      function removePopupWithClickOut(evt) {
         if (evt.target.classList.contains("overlay")) {
           evt.target.remove(popupElement);
+          popupElement.removeEventListener("click", removePopupWithClickOut);
         }
-      });
+      }
 
       return cardContainer.append(popupElement);
     });
@@ -109,23 +121,31 @@ function createCard(item) {
   return cardContainer.append(cardElement);
 }
 
-/*----  Enviando dados de perfil via formulário    ----*/
+/*----  Evento para abrir formulário de dados de perfil    ----*/
 
 editBtn.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = descriptionProfile.textContent;
   modalProfile.classList.add("overlay");
-  window.addEventListener("keydown", (evt) => {
+
+  window.addEventListener("keydown", closeModalWithEscape);
+  function closeModalWithEscape(evt) {
     if (evt.key === "Escape") {
       modalProfile.classList.remove("overlay");
+      window.removeEventListener("keydown", closeModalWithEscape);
     }
-  });
-  modalProfile.addEventListener("click", (evt) => {
+  }
+
+  modalProfile.addEventListener("click", closeModalWithClickOut);
+  function closeModalWithClickOut(evt) {
     if (evt.target.classList.contains("overlay")) {
       evt.target.classList.remove("overlay");
+      modalProfile.removeEventListener("click", closeModalWithClickOut);
     }
-  });
+  }
 });
+
+/*----  Enviando dados de perfil via formulário    ----*/
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -136,25 +156,35 @@ function handleProfileFormSubmit(evt) {
 
 formProfile.addEventListener("submit", handleProfileFormSubmit);
 
-/*----  Enviando dados para adicionar card via formulário   ----*/
+/*----  Evento para abrir formulário para adicionar um card   ----*/
 
 addCardButton.addEventListener("click", () => {
   modalCard.classList.add("overlay");
-  window.addEventListener("keydown", (evt) => {
+
+  window.addEventListener("keydown", closeModalWithEscape);
+  function closeModalWithEscape(evt) {
     if (evt.key === "Escape") {
       modalCard.classList.remove("overlay");
+      window.removeEventListener("keydown", closeModalWithEscape);
     }
-  });
-  modalCard.addEventListener("click", (evt) => {
+  }
+
+  modalCard.addEventListener("click", closeModalWithClickOut);
+  function closeModalWithClickOut(evt) {
     if (evt.target.classList.contains("overlay")) {
       evt.target.classList.remove("overlay");
+      modalCard.removeEventListener("click", closeModalWithClickOut);
     }
-  });
+  }
 });
+
+/*----  Enviando dados para adicionar card via formulário   ----*/
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
+
   cards.unshift({ name: titleInput.value, link: urlInput.value });
+
   const card = document.querySelector("#card").content;
   const cardContainer = document.querySelector(".pictures-container");
   const cardElement = card.querySelector(".picture-card").cloneNode(true);
@@ -185,22 +215,29 @@ function handleCardFormSubmit(evt) {
       popupElement.querySelector(".popup__image").src = cardLink;
       popupElement.querySelector(".popup__image").alt = cardName + " image";
       popupElement.querySelector(".popup__title").textContent = cardName;
-      const btnCloseModal = popupElement.querySelector(".popup__close-btn");
-      btnCloseModal.addEventListener("click", () => {
-        popupElement.remove();
-      });
 
-      window.addEventListener("keydown", (evt) => {
+      const btnCloseModal = popupElement.querySelector(".popup__close-btn");
+      btnCloseModal.addEventListener("click", closeModal);
+      function closeModal(evt) {
+        popupElement.remove();
+        btnCloseModal.removeEventListener("click", closeModal);
+      }
+
+      window.addEventListener("keydown", removePopupWithEscape);
+      function removePopupWithEscape(evt) {
         if (evt.key === "Escape") {
           popupElement.remove();
+          window.removeEventListener("keydown", removePopupWithEscape);
         }
-      });
+      }
 
-      popupElement.addEventListener("click", (evt) => {
+      popupElement.addEventListener("click", removePopupWithClickOut);
+      function removePopupWithClickOut(evt) {
         if (evt.target.classList.contains("overlay")) {
           evt.target.remove(popupElement);
+          popupElement.removeEventListener("click", removePopupWithClickOut);
         }
-      });
+      }
 
       popupElement.classList.add("overlay");
 
@@ -208,6 +245,7 @@ function handleCardFormSubmit(evt) {
     });
 
   modalCard.classList.remove("overlay");
+
   cardContainer.prepend(cardElement);
 }
 
