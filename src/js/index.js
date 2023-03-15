@@ -25,15 +25,15 @@ const cards = [
   },
 ];
 
-const cardContainer = document.querySelector(".pictures-container");
-
 class Card {
   constructor(data, cardSelector) {
     this._title = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._isLiked = false;
   }
 
+  /*  Recolhe e clona o template do card*/
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
@@ -42,9 +42,11 @@ class Card {
 
     return cardElement;
   }
-
+  /*  Atribui os valores para atributos do elemento e cria o card */
   createCard() {
     this._element = this._getTemplate();
+
+    this._setEventListeners();
 
     this._element.querySelector(".picture-card__image").src = this._link;
     this._element.querySelector(
@@ -56,16 +58,34 @@ class Card {
     return this._element;
   }
 
+  _setEventListeners() {
+    /**/
+    const deleteBtn = this._element.querySelector(".picture-card__delete-btn");
+    deleteBtn.addEventListener("click", () => {
+      cards.shift(this._element);
+      deleteBtn.parentElement.remove();
+    });
+
+    const likeBtn = this._element.querySelector(".picture-card__like-btn");
+    likeBtn.addEventListener("click", () => {
+      likeBtn.classList.toggle("picture-card__like-btn_active");
+      this._like();
+    });
+  }
+
+  _like() {
+    this._isLiked = !this._isLiked;
+  }
+
   _handleOpenPopup() {}
 
   _handleClosePopup() {}
-
-  _setEventListeners() {}
 }
 
 const renderElements = () => {
   cards.forEach((cardItem) => {
     const newCard = new Card(cardItem, ".card");
+    const cardContainer = document.querySelector(".pictures-container");
     const cardElement = newCard.createCard();
     cardContainer.append(cardElement);
   });
