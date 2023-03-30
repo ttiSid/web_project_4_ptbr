@@ -58,79 +58,85 @@
         </footer>
       </main>
     </div>
-    <div class="general-modal modal-profile overlay-disable">
-      <div class="modal">
-        <form action="#" class="modal-container form form-profile" novalidate>
-          <button class="modal__close-btn" type="button"></button>
-          <h2 class="modal__title">Editar perfil</h2>
-          <div class="modal__container">
+    <template id="modal-profile">
+      <div class="general-modal modal-profile overlay-disable">
+        <div class="modal">
+          <form action="#" class="modal-container form form-profile" novalidate>
+            <button class="modal__close-btn" type="button"></button>
+            <h2 class="modal__title">Editar perfil</h2>
+            <div class="modal__container">
+              <div>
+                <input
+                  class="modal__input-field input-field-name"
+                  type="text"
+                  name="profile-name"
+                  id="profile-name"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
+                <span class="modal__input-error profile-name-error"></span>
+              </div>
+              <div>
+                <input
+                  class="modal__input-field input-field-description"
+                  type="text"
+                  name="profile-description"
+                  id="profile-description"
+                  minlength="2"
+                  maxlength="200"
+                  required
+                />
+                <span
+                  class="modal__input-error profile-description-error"
+                ></span>
+              </div>
+              <input
+                class="modal__submit-btn modal__submit-btn_error"
+                value="Salvar"
+                type="submit"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </template>
+    <template id="modal-card">
+      <div class="general-modal modal-card overlay-disable">
+        <div class="modal">
+          <form action="#" class="modal-container form form-card" novalidate>
+            <button class="modal__close-btn" type="button"></button>
+            <h2 class="modal__title">New place</h2>
             <div>
               <input
-                class="modal__input-field input-field-name"
+                class="modal__input-field input-field-title"
                 type="text"
-                name="profile-name"
-                id="profile-name"
+                name="card-name"
+                id="card-name"
+                placeholder="Title"
                 minlength="2"
-                maxlength="40"
+                maxlength="30"
                 required
               />
-              <span class="modal__input-error profile-name-error"></span>
+              <span class="modal__input-error card-name-error"></span>
             </div>
             <div>
               <input
-                class="modal__input-field input-field-description"
-                type="text"
-                name="profile-description"
-                id="profile-description"
-                minlength="2"
-                maxlength="200"
+                class="modal__input-field input-field-url"
+                type="url"
+                name="card-url"
+                id="card-url"
+                placeholder="Image URL"
                 required
               />
-              <span class="modal__input-error profile-description-error"></span>
+              <span class="modal__input-error card-url-error"></span>
             </div>
-            <input
-              class="modal__submit-btn modal__submit-btn_error"
-              value="Salvar"
-              type="submit"
-            />
-          </div>
-        </form>
+            <input class="modal__submit-btn" value="Salvar" type="submit" />
+          </form>
+        </div>
       </div>
-    </div>
-    <div class="general-modal modal-card overlay-disable">
-      <div class="modal">
-        <form action="#" class="modal-container form form-card" novalidate>
-          <button class="modal__close-btn" type="button"></button>
-          <h2 class="modal__title">New place</h2>
-          <div>
-            <input
-              class="modal__input-field input-field-title"
-              type="text"
-              name="card-name"
-              id="card-name"
-              placeholder="Title"
-              minlength="2"
-              maxlength="30"
-              required
-            />
-            <span class="modal__input-error card-name-error"></span>
-          </div>
-          <div>
-            <input
-              class="modal__input-field input-field-url"
-              type="url"
-              name="card-url"
-              id="card-url"
-              placeholder="Image URL"
-              required
-            />
-            <span class="modal__input-error card-url-error"></span>
-          </div>
-          <input class="modal__submit-btn" value="Salvar" type="submit" />
-        </form>
-      </div>
-    </div>
+    </template>
     <script src="./js/index.js"></script>
-    <script src="./js/validate.js"></script>
+    <script src="./js/FormValidator.js"></script>
   </body>
 </html>

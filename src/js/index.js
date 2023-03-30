@@ -67,8 +67,7 @@ class Card {
 
   _setEventListeners() {
     const deleteBtn = this._element.querySelector(".picture-card__delete-btn");
-    deleteBtn.addEventListener("click", () => {
-      cards.shift(this._element);
+    deleteBtn.addEventListener("click", (evt) => {
       deleteBtn.parentElement.remove();
     });
 
@@ -169,5 +168,4 @@ const renderCards = () => {
     cardContainer.append(cardElement);
   });
 };
-
 renderCards();
