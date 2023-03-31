@@ -50,7 +50,7 @@ const enableValidation = () => {
     setEventListeners(formElement);
   });
 }; */
-
+/* 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(errorClass);
   errorElement.textContent = errorMessage;
@@ -109,4 +109,4 @@ enableValidation({
   inactiveButtonClass: "modal__submit-btn_inactive",
   inputErrorClass: "modal__input-error_active",
   errorClass: `.${inputElement.id}-error`,
-});
+}); */

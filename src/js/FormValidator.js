@@ -1,16 +1,4 @@
-(function setEventListeners() {
-  const addCard = document.querySelector(".profile__add-card-button");
-  addCard.addEventListener("click", () => {
-    renderCardForm();
-  });
-
-  const editProfile = document.querySelector(".profile__edit-button");
-  editProfile.addEventListener("click", () => {
-    renderProfileForm();
-  });
-})();
-
-class FormValidator {
+export default class FormValidator {
   constructor(configObj, formSelect) {
     this._formSelector = configObj.formSelector; /* ".form" */
     this._inputSelector = configObj.inputSelector; /* ".modal__input-field" */
@@ -24,6 +12,8 @@ class FormValidator {
     this.formSelect = formSelect;
   }
 
+  /*  Coleta o modelo do formulário de acordo com o parâmetro */
+
   _getFormTemplate() {
     const formTemplate = document.querySelector(this.formSelect).content;
 
@@ -33,6 +23,8 @@ class FormValidator {
 
     return this._formElement;
   }
+
+  /*  Adiciona os ouvintes aos elementos do formulário  */
 
   _setEventListeners = () => {
     const inputList = Array.from(
@@ -52,11 +44,25 @@ class FormValidator {
 
     this._toggleButtonState(inputList, this._submitButtonSelector);
 
+    this._formElement.addEventListener("submit", this.enableValidation);
+
     this._closeButton = this._formElement.querySelector(".modal__close-btn");
-    this._closeButton.addEventListener("click", () => {
-      this._closeButton.parentElement.parentElement.parentElement.remove();
+    this._closeButton.addEventListener("click", this._handleCloseForm);
+
+    window.addEventListener("keydown", (evt) => {
+      if (evt.key === "Escape") {
+        this._removeFormWithEscape(evt);
+      }
+    });
+
+    this._formElement.addEventListener("click", (evt) => {
+      if (evt.target.classList.contains("overlay")) {
+        this._removeFormWithClickOut();
+      }
     });
   };
+
+  /*  Apresenta ou esconde os elementos de erro caso o input for inválido */
 
   _checkInputValidity = (_formElement, inputElement) => {
     if (!inputElement.validity.valid) {
@@ -70,9 +76,13 @@ class FormValidator {
     }
   };
 
+  /*  Valida se os campos possuem um input inválido */
+
   _hasInvalidInput = (inputList, inputElement) => {
     return inputList.some((inputElement) => !inputElement.validity.valid);
   };
+
+  /*  Altera o estado do botão de submit dependendo do retorno da validação */
 
   _toggleButtonState = (inputList) => {
     if (this._hasInvalidInput(inputList)) {
@@ -82,11 +92,15 @@ class FormValidator {
     }
   };
 
-  enableValidation = () => {
-    this._formElement.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-    });
+  enableValidation = (evt) => {
+    evt.preventDefault();
+    if (this.formSelect == "#modal-card") {
+    } else {
+      console.log("perfil alterado");
+    }
   };
+
+  /*  Apresenta o elemento de erro dos inputs retornado pela validação  */
 
   _showInputError = (_formElement, inputElement, errorMessage) => {
     this._errorElement = _formElement.querySelector(
@@ -96,12 +110,16 @@ class FormValidator {
     this._errorElement.textContent = errorMessage;
   };
 
+  /*  Esconde o elemento de erro dos inputs retornado pela validação  */
+
   _hideInputError = (inputElement) => {
     if (this._errorElement) {
       this._errorElement.classList.remove(this._inputErrorClass);
       this._errorElement.textContent = "";
     }
   };
+
+  /*  Abre o modal do formulário e chama o ouvinte de eventos*/
 
   _handleOpenForm() {
     this._formElement = this._getFormTemplate();
@@ -111,38 +129,26 @@ class FormValidator {
 
     return this._formElement;
   }
+
+  /*  Fecha o modal do formulário através do botão  */
+
+  _handleCloseForm = () => {
+    this._closeButton.parentElement.parentElement.parentElement.remove();
+  };
+
+  /*  Fecha o modal do formulário através da tecla ESC */
+
+  _removeFormWithEscape(evt) {
+    if (evt.key === "Escape") {
+      this._handleCloseForm();
+      window.removeEventListener("keydown", this._removeFormWithEscape);
+    }
+  }
+
+  /*  Fecha o modal do formulário através do clique fora da janela  */
+
+  _removeFormWithClickOut(evt) {
+    this._formElement.remove();
+    this._formElement.removeEventListener("click", this._formPopupWithClickOut);
+  }
 }
-
-const renderCardForm = () => {
-  const newForm = new FormValidator(
-    {
-      formSelector: ".form",
-      inputSelector: ".modal__input-field",
-      submitButtonSelector: ".modal__submit-btn",
-      inactiveButtonClass: "modal__submit-btn_inactive",
-      inputErrorClass: "modal__input-error_active",
-    },
-    "#modal-card"
-  );
-  const mainContainer = document.querySelector(".pictures-container");
-
-  const newFormElement = newForm._handleOpenForm();
-  mainContainer.append(newFormElement);
-};
-
-const renderProfileForm = () => {
-  const newForm = new FormValidator(
-    {
-      formSelector: ".form",
-      inputSelector: ".modal__input-field",
-      submitButtonSelector: ".modal__submit-btn",
-      inactiveButtonClass: "modal__submit-btn_inactive",
-      inputErrorClass: "modal__input-error_active",
-    },
-    "#modal-profile"
-  );
-  const mainContainer = document.querySelector(".pictures-container");
-
-  const newFormElement = newForm._handleOpenForm();
-  mainContainer.append(newFormElement);
-};
