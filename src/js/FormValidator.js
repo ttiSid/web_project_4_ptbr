@@ -64,6 +64,8 @@ export default class FormValidator {
     });
   };
 
+  /*----------------------  Validações  ----------------------*/
+
   /*  Apresenta ou esconde os elementos de erro caso o input for inválido */
 
   _checkInputValidity = (_formElement, inputElement) => {
@@ -100,33 +102,9 @@ export default class FormValidator {
       this._generateCard();
       this._handleCloseForm();
     } else {
-      console.log("perfil alterado");
+      this._editProfile();
+      this._handleCloseForm();
     }
-  };
-
-  /*  Coleta as informações do card */
-
-  _getCardInfo = () => {
-    this._name = this._formElement.querySelector("#card-name").value;
-    this._link = this._formElement.querySelector("#card-url").value;
-
-    this._cardData = {
-      name: this._name,
-      link: this._link,
-    };
-
-    return this._cardData;
-  };
-
-  /* Cria um novo card através do formulário */
-
-  _generateCard = () => {
-    this._getCardInfo();
-    const newCard = new Card(this._cardData, ".card");
-    const cardContainer = document.querySelector(".pictures-container");
-    const cardElement = newCard.createCard();
-    cardContainer.prepend(cardElement);
-    console.log(this._cardData);
   };
 
   /*  Apresenta o elemento de erro dos inputs retornado pela validação  */
@@ -178,6 +156,58 @@ export default class FormValidator {
 
   _removeFormWithClickOut(evt) {
     this._formElement.remove();
-    this._formElement.removeEventListener("click", this._formPopupWithClickOut);
+    this._formElement.removeEventListener(
+      "click",
+      this._removeFormWithClickOut
+    );
   }
+
+  /*----------------------  Gerando um novo card  ----------------------*/
+
+  /*  Coleta as informações do card */
+
+  _getCardInfo = () => {
+    this._name = this._formElement.querySelector("#card-name").value;
+    this._link = this._formElement.querySelector("#card-url").value;
+
+    this._cardData = {
+      name: this._name,
+      link: this._link,
+    };
+
+    return this._cardData;
+  };
+
+  /* Cria um novo card através do formulário */
+
+  _generateCard = () => {
+    this._getCardInfo();
+    const newCard = new Card(this._cardData, ".card");
+    const cardContainer = document.querySelector(".pictures-container");
+    const cardElement = newCard.createCard();
+    cardContainer.prepend(cardElement);
+    console.log(this._cardData);
+  };
+
+  /*----------------------  Editando dados do perfil  ----------------------*/
+
+  /* Coleta os dados do perfil */
+
+  _getProfileInfo = () => {
+    this._profileName = document.querySelector(".profile__name");
+    this._profileAbout = document.querySelector(".profile__about-me");
+
+    this._getProfileName = this._formElement.querySelector("#profile-name");
+    this._getProfileAbout = this._formElement.querySelector(
+      "#profile-description"
+    );
+  };
+
+  /* Edita os dados do perfil */
+
+  _editProfile = () => {
+    this._getProfileInfo();
+    this._profileName.textContent = this._getProfileName.value;
+    this._profileAbout.textContent = this._getProfileAbout.value;
+  };
 }
