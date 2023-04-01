@@ -1,3 +1,5 @@
+import Card from "./Card.js";
+
 export default class FormValidator {
   constructor(configObj, formSelect) {
     this._formSelector = configObj.formSelector; /* ".form" */
@@ -95,9 +97,36 @@ export default class FormValidator {
   enableValidation = (evt) => {
     evt.preventDefault();
     if (this.formSelect == "#modal-card") {
+      this._generateCard();
+      this._handleCloseForm();
     } else {
       console.log("perfil alterado");
     }
+  };
+
+  /*  Coleta as informações do card */
+
+  _getCardInfo = () => {
+    this._name = this._formElement.querySelector("#card-name").value;
+    this._link = this._formElement.querySelector("#card-url").value;
+
+    this._cardData = {
+      name: this._name,
+      link: this._link,
+    };
+
+    return this._cardData;
+  };
+
+  /* Cria um novo card através do formulário */
+
+  _generateCard = () => {
+    this._getCardInfo();
+    const newCard = new Card(this._cardData, ".card");
+    const cardContainer = document.querySelector(".pictures-container");
+    const cardElement = newCard.createCard();
+    cardContainer.prepend(cardElement);
+    console.log(this._cardData);
   };
 
   /*  Apresenta o elemento de erro dos inputs retornado pela validação  */
