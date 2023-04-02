@@ -134,6 +134,12 @@ export default class FormValidator {
     this._setEventListeners();
     this._formElement.classList.add("overlay");
 
+    if (this.formSelect == "#modal-profile") {
+      this._getProfileInfo();
+      this._getProfileName.value = this._profileName.textContent;
+      this._getProfileAbout.value = this._profileAbout.textContent;
+    }
+
     return this._formElement;
   }
 
@@ -186,7 +192,6 @@ export default class FormValidator {
     const cardContainer = document.querySelector(".pictures-container");
     const cardElement = newCard.createCard();
     cardContainer.prepend(cardElement);
-    console.log(this._cardData);
   };
 
   /*----------------------  Editando dados do perfil  ----------------------*/
