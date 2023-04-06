@@ -1,43 +1,22 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { evtListeners } from "./utils.js";
+import Section from "./Section.js";
+import { cards, cardContainer } from "./utils.js";
 
-const cards = [
+const cardList = new Section(
   {
-    name: "Vale de Yosemite",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+    items: cards,
+    renderer: (item) => {
+      const card = new Card(item, ".card");
+      const cardElement = card.createCard();
+      cardList.addItem(cardElement);
+    },
   },
-  {
-    name: "Lago Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Montanhas Carecas",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-  {
-    name: "Parque Nacional da Vanoise ",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-];
+  cardContainer
+);
 
-const renderCards = () => {
-  cards.forEach((cardItem) => {
-    const newCard = new Card(cardItem, ".card");
-    const cardContainer = document.querySelector(".pictures-container");
-    const cardElement = newCard.createCard();
-    cardContainer.append(cardElement);
-  });
-};
-renderCards();
+cardList.renderer();
 
 export const renderCardForm = () => {
   const newForm = new FormValidator(
