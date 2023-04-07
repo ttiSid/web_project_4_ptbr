@@ -4,6 +4,8 @@ import { evtListeners } from "./utils.js";
 import Section from "./Section.js";
 import { cards, cardContainer } from "./utils.js";
 
+/*  Inserindo cards existentes ao DOM */
+
 const cardList = new Section(
   {
     items: cards,
@@ -15,7 +17,6 @@ const cardList = new Section(
   },
   cardContainer
 );
-
 cardList.renderer();
 
 export const renderCardForm = () => {

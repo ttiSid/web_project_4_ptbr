@@ -1,7 +1,7 @@
 import Card from "./Card.js";
 
 export default class FormValidator {
-  constructor(configObj, formSelect) {
+  constructor({ configObj }, formSelect) {
     this._formSelector = configObj.formSelector; /* ".form" */
     this._inputSelector = configObj.inputSelector; /* ".modal__input-field" */
     this._submitButtonSelector =
