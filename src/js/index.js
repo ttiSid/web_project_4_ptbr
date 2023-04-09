@@ -3,6 +3,7 @@ import FormValidator from "./FormValidator.js";
 import { evtListeners } from "./utils.js";
 import Section from "./Section.js";
 import { cards, cardContainer } from "./utils.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 /*  Inserindo cards existentes ao DOM */
 
@@ -10,7 +11,17 @@ const cardList = new Section(
   {
     items: cards,
     renderer: (item) => {
-      const card = new Card(item, ".card");
+      const card = new Card(
+        {
+          data: item,
+          handleCardClick: (name, link) => {
+            const popupImg = new PopupWithImage("#popup");
+            popupImg.open(name, link);
+            popupImg.setEventListeners();
+          },
+        },
+        ".card"
+      );
       const cardElement = card.createCard();
       cardList.addItem(cardElement);
     },
