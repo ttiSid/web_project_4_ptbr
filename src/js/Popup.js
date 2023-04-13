@@ -3,35 +3,48 @@ export default class Popup {
     this.popupSelector = document.querySelector(popupSelector);
   }
 
-  open() {}
+  _getFormTemplate() {
+    const formTemplate = document.querySelector(this.popupSelector).content;
 
-  close() {
-    this._popupElement.remove();
+    this._formElement = formTemplate
+      .querySelector(this.popupSelector.replace("#", "."))
+      .cloneNode(true);
+
+    return this._formElement;
   }
 
-  _handleEscClose(evt) {
+  open() {
+    this._formElement = this._getFormTemplate();
+    this.setEventListeners();
+    this._formElement.classList.add("overlay");
+
+    return this._formElement;
+  }
+
+  close = () => {
+    this._formElement.remove();
+    document.removeEventListener("click", this.handleClickOutClose);
+    window.removeEventListener("keydown", this.handleEscClose);
+    const closeBtn = this._formElement.querySelector(".modal__close-btn");
+    closeBtn.removeEventListener("click", this.close);
+  };
+
+  handleEscClose = (evt) => {
     if (evt.key === "Escape") {
       this.close();
     }
-    window.removeEventListener("keydown", this._handleEscClose);
-  }
+  };
 
-  _handleClickOutClose(evt) {
+  handleClickOutClose = (evt) => {
     if (evt.target.classList.contains("overlay")) {
       this.close();
     }
-    window.removeEventListener("click", this._handleClickOutClose);
-  }
+  };
 
   setEventListeners() {
-    const closeBtn = document.querySelector(".modal__close-btn");
-    closeBtn.addEventListener("click", (evt) => {
-      this.close();
-    });
-    window.addEventListener("keydown", (evt) => this._handleEscClose(evt));
-
-    this._popupElement.addEventListener("click", (evt) =>
-      this._handleClickOutClose(evt)
-    );
+    window.addEventListener("keydown", this.handleEscClose);
+    document.addEventListener("click", this.handleClickOutClose);
+    const closeBtn = this._formElement.querySelector(".modal__close-btn");
+    closeBtn.addEventListener("click", this.close);
   }
 }

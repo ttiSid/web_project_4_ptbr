@@ -4,6 +4,7 @@ import { evtListeners } from "./utils.js";
 import Section from "./Section.js";
 import { cards, cardContainer } from "./utils.js";
 import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
 
 /*  Inserindo cards existentes ao DOM */
 
@@ -28,23 +29,41 @@ const cardList = new Section(
   },
   cardContainer
 );
+
 cardList.renderer();
 
 export const renderCardForm = () => {
-  const newForm = new FormValidator(
-    {
-      formSelector: ".form",
-      inputSelector: ".modal__input-field",
-      submitButtonSelector: ".modal__submit-btn",
-      inactiveButtonClass: "modal__submit-btn_inactive",
-      inputErrorClass: "modal__input-error_active",
-    },
-    "#modal-card"
-  );
-  const mainContainer = document.querySelector(".pictures-container");
+  const newForm = new PopupWithForm("#modal-card", (evt) => {
+    evt.preventDefault();
+    const cardData = newForm._getInputValues();
+    const newCard = new Card(
+      {
+        data: cardData,
+        handleCardClick: (name, link) => {
+          const popupImg = new PopupWithImage("#popup");
+          popupImg.open(name, link);
+          popupImg.setEventListeners();
+        },
+      },
+      ".card"
+    );
+    const cardContainer = document.querySelector(".pictures-container");
+    const cardElement = newCard.createCard();
+    cardContainer.prepend(cardElement);
+  });
 
-  const newFormElement = newForm._handleOpenForm();
+  const mainContainer = document.querySelector(".pictures-container");
+  const newFormElement = newForm.open();
   mainContainer.append(newFormElement);
+  new FormValidator(configObj, "#modal-card").enableValidation();
+};
+
+const configObj = {
+  formSelector: ".form",
+  inputSelector: ".modal__input-field",
+  submitButtonSelector: ".modal__submit-btn",
+  inactiveButtonClass: "modal__submit-btn_inactive",
+  inputErrorClass: "modal__input-error_active",
 };
 
 export const renderProfileForm = () => {
