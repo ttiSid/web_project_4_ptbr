@@ -28,17 +28,8 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-
-    /* document.removeEventListener("click", this.removeFormWithClickOut);
-    closeBtn.removeEventListener("click", this.close); */
   }
 
-  /* removeFormWithClickOut = (evt) => {
-    if (evt.target.classList.contains("overlay")) {
-      this.close();
-    }
-  };
- */
   _getInputValues() {
     this._link = this._formElement.querySelector("#card-url").value;
     this._name = this._formElement.querySelector("#card-name").value;

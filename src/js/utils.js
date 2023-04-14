@@ -1,4 +1,4 @@
-export { evtListeners };
+export { evtListeners, configObj };
 import { renderCardForm, renderProfileForm } from "./index.js";
 
 export const cardContainer = ".pictures-container";
@@ -40,3 +40,11 @@ const evtListeners = (function () {
     renderProfileForm();
   });
 })();
+
+const configObj = {
+  formSelector: ".form",
+  inputSelector: ".modal__input-field",
+  submitButtonSelector: ".modal__submit-btn",
+  inactiveButtonClass: "modal__submit-btn_inactive",
+  inputErrorClass: "modal__input-error_active",
+};

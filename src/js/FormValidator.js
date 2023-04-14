@@ -1,5 +1,3 @@
-import Card from "./Card.js";
-
 export default class FormValidator {
   constructor(configObj, formSelect) {
     this._formSelector = configObj.formSelector; /* ".form" */
@@ -83,25 +81,5 @@ export default class FormValidator {
       this._errorElement.classList.remove(this._inputErrorClass);
       this._errorElement.textContent = "";
     }
-  };
-
-  /* Coleta os dados do perfil */
-
-  _getProfileInfo = () => {
-    this._profileName = document.querySelector(".profile__name");
-    this._profileAbout = document.querySelector(".profile__about-me");
-
-    this._getProfileName = this._formElement.querySelector("#profile-name");
-    this._getProfileAbout = this._formElement.querySelector(
-      "#profile-description"
-    );
-  };
-
-  /* Edita os dados do perfil */
-
-  _editProfile = () => {
-    this._getProfileInfo();
-    this._profileName.textContent = this._getProfileName.value;
-    this._profileAbout.textContent = this._getProfileAbout.value;
   };
 }
