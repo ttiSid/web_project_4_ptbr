@@ -1,5 +1,5 @@
 export { evtListeners, configObj };
-import { renderCardForm, renderProfileForm } from "./index.js";
+import { renderCardForm, renderProfileForm } from "../index.js";
 
 export const cardContainer = ".pictures-container";
 export const cards = [
