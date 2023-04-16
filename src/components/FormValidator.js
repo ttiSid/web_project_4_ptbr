@@ -50,7 +50,7 @@ export default class FormValidator {
 
   /*  Valida se os campos possuem um input inválido */
 
-  _hasInvalidInput = (inputList, inputElement) => {
+  _hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => !inputElement.validity.valid);
   };
 
@@ -76,7 +76,7 @@ export default class FormValidator {
 
   /*  Esconde o elemento de erro dos inputs retornado pela validação  */
 
-  _hideInputError = (inputElement) => {
+  _hideInputError = () => {
     if (this._errorElement) {
       this._errorElement.classList.remove(this._inputErrorClass);
       this._errorElement.textContent = "";
