@@ -55,9 +55,12 @@ export const renderCardForm = () => {
     cardContainer.prepend(cardElement);
   });
 
-  const mainContainer = document.querySelector(".pictures-container");
-  const newFormElement = newForm.open();
-  mainContainer.append(newFormElement);
+  if (document.querySelector(".form") === null) {
+    const mainContainer = document.querySelector(".pictures-container");
+    const newFormElement = newForm.open();
+    mainContainer.append(newFormElement);
+  }
+
   new FormValidator(configObj, "#modal-card").enableValidation();
 };
 
@@ -76,9 +79,10 @@ export const renderProfileForm = () => {
 
   userInfo.getUserInfo();
 
-  const mainContainer = document.querySelector(".pictures-container");
-  const newFormElement = newForm.open();
-  mainContainer.append(newFormElement);
-
+  if (document.querySelector(".form") === null) {
+    const mainContainer = document.querySelector(".pictures-container");
+    const newFormElement = newForm.open();
+    mainContainer.append(newFormElement);
+  }
   new FormValidator(configObj, "#modal-profile").enableValidation();
 };
