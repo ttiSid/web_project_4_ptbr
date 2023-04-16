@@ -10,7 +10,7 @@ import UserInfo from "./components/UserInfo.js";
 
 /*  Adicionando EventListeners aos botões de adicionar e editar perfil  */
 
-const evtListeners = (function () {
+(function () {
   const addCard = document.querySelector(".profile__add-card-button");
   addCard.addEventListener("click", () => {
     renderCardForm();
