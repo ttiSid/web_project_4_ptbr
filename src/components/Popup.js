@@ -24,12 +24,12 @@ export default class Popup {
   close = () => {
     this._formElement.remove();
     document.removeEventListener("click", this.handleClickOutClose);
-    window.removeEventListener("keydown", this.handleEscClose);
+    window.removeEventListener("keydown", this._handleEscClose);
     const closeBtn = this._formElement.querySelector(".modal__close-btn");
     closeBtn.removeEventListener("click", this.close);
   };
 
-  handleEscClose = (evt) => {
+  _handleEscClose = (evt) => {
     if (evt.key === "Escape") {
       this.close();
     }
@@ -42,7 +42,7 @@ export default class Popup {
   };
 
   setEventListeners() {
-    window.addEventListener("keydown", this.handleEscClose);
+    window.addEventListener("keydown", this._handleEscClose);
     document.addEventListener("click", this.handleClickOutClose);
     const closeBtn = this._formElement.querySelector(".modal__close-btn");
     closeBtn.addEventListener("click", this.close);
