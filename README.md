@@ -10,7 +10,8 @@ O projeto está tendo como intuito praticar e consolidar os conceitos de respons
 
 - Javascript modular e Programação Orientada a Objetos.
 
-Confira o projeto através do [link](https://ttisid.github.io/web_project_4_ptbr/).
+A implementação do projeto no GitHub Pages está prevista para a próxima Sprint.
+Em breve o link estará disponível.
 
 ### Última atualização
 
