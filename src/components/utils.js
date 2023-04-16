@@ -1,5 +1,4 @@
-export { evtListeners, configObj };
-import { renderCardForm, renderProfileForm } from "../index.js";
+export { configObj };
 
 export const cardContainer = ".pictures-container";
 export const cards = [
@@ -28,18 +27,6 @@ export const cards = [
     link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
   },
 ];
-
-const evtListeners = (function () {
-  const addCard = document.querySelector(".profile__add-card-button");
-  addCard.addEventListener("click", () => {
-    renderCardForm();
-  });
-
-  const editProfile = document.querySelector(".profile__edit-button");
-  editProfile.addEventListener("click", () => {
-    renderProfileForm();
-  });
-})();
 
 const configObj = {
   formSelector: ".form",
