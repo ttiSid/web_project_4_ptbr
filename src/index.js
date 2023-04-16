@@ -8,6 +8,20 @@ import PopupWithImage from "./components/PopupWithImage.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import UserInfo from "./components/UserInfo.js";
 
+/*  Adicionando EventListeners aos botões de adicionar e editar perfil  */
+
+const evtListeners = (function () {
+  const addCard = document.querySelector(".profile__add-card-button");
+  addCard.addEventListener("click", () => {
+    renderCardForm();
+  });
+
+  const editProfile = document.querySelector(".profile__edit-button");
+  editProfile.addEventListener("click", () => {
+    renderProfileForm();
+  });
+})();
+
 /*  Inserindo cards existentes ao DOM */
 
 const cardList = new Section(
