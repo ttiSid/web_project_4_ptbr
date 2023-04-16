@@ -1,4 +1,4 @@
-export { evtListeners, configObj };
+export { configObj };
 import { renderCardForm, renderProfileForm } from "../index.js";
 
 export const cardContainer = ".pictures-container";

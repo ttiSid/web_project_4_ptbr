@@ -1,7 +1,7 @@
 import "./styles/index.css";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
-import { evtListeners, configObj } from "./components/utils.js";
+import { configObj } from "./components/utils.js";
 import Section from "./components/Section.js";
 import { cards, cardContainer } from "./components/utils.js";
 import PopupWithImage from "./components/PopupWithImage.js";
