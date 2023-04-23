@@ -1,0 +1,12 @@
+.modal-confirm {
+  width: 358px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.22rem;
+}
+
+@media screen and (max-width: 767px) {
+  .modal-confirm {
+    max-width: 238px;
+  }
+}
