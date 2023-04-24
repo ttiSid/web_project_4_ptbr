@@ -36,6 +36,8 @@
 @import url("../blocks/profile/__about-me/profile__about-me.css");
 /*  PROFILE EDIT-BUTTON */
 @import url("../blocks/profile/__edit-button/profile__edit-button.css");
+/*  PROFILE EDIT-PICTURE  */
+@import url("../blocks/profile/__edit-picture/profile__edit-picture.css");
 /*  PROFILE ADD-CARD-BUTTON  */
 @import url("../blocks/profile/__add-card-button/profile__add-card-button.css");
 /*-------------------------------------------------------*/

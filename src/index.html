@@ -17,11 +17,13 @@
       </header>
       <main class="container">
         <section class="profile">
-          <img
-            class="profile__image"
-            src="<%=require('./images/image-profile.jpg')%>"
-            alt="profile image"
-          />
+          <button class="profile__edit-picture">
+            <img
+              class="profile__image"
+              src="<%=require('./images/image-profile.jpg')%>"
+              alt="profile image"
+            />
+          </button>
           <div class="wrap">
             <div class="wrap-profile">
               <div class="wrap-edit-profile">
@@ -112,7 +114,7 @@
         <div class="modal">
           <form action="#" class="modal-container form form-card" novalidate>
             <button class="modal__close-btn" type="button"></button>
-            <h2 class="modal__title">New place</h2>
+            <h2 class="modal__title">Novo Local</h2>
             <div>
               <input
                 class="modal__input-field input-field-title"
@@ -137,7 +139,7 @@
               />
               <span class="modal__input-error card-url-error"></span>
             </div>
-            <button class="modal__submit-btn" type="submit">Salvar</button>
+            <button class="modal__submit-btn" type="submit">Crie</button>
           </form>
         </div>
       </div>
@@ -150,6 +152,28 @@
             <h2 class="modal__title">Tem certeza?</h2>
             <button class="modal__submit-btn">Sim</button>
           </div>
+        </div>
+      </div>
+    </template>
+    <template id="modal-profile-picture">
+      <div class="general-modal overlay">
+        <div class="modal">
+          <form action="#" class="modal-container form form-profile-picture">
+            <button class="modal__close-btn" type="button"></button>
+            <h2 class="modal__title">Alterar a foto de perfil</h2>
+            <div>
+              <input
+                class="modal__input-field input-field-profile-url-picture"
+                type="url"
+                name="profile-url-picture"
+                id="profile-url-picture"
+                placeholder="Profile URL Picture"
+                required
+              />
+              <span class="modal__input-error profile-url-picture-error"></span>
+            </div>
+            <button class="modal__submit-btn" type="submit">Salvar...</button>
+          </form>
         </div>
       </div>
     </template>
