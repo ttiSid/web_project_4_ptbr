@@ -3,10 +3,11 @@ import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
 import { configObj } from "./components/utils.js";
 import Section from "./components/Section.js";
-import { cards, cardContainer } from "./components/utils.js";
+import { cardContainer } from "./components/utils.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import UserInfo from "./components/UserInfo.js";
+import { api } from "./components/API.js";
 
 /*  Adicionando EventListeners aos botões de adicionar e editar perfil  */
 
@@ -22,11 +23,15 @@ import UserInfo from "./components/UserInfo.js";
   });
 })();
 
+const InitialCards = api.getInitialCards();
+
 /*  Inserindo cards existentes ao DOM */
 
 const cardList = new Section(
   {
-    items: cards,
+    items: InitialCards.then((data) => {
+      return data;
+    }),
     renderer: (item) => {
       const card = new Card(
         {
