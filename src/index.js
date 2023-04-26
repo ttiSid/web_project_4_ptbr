@@ -86,14 +86,14 @@ const user = api.getUser();
 export const renderProfileForm = () => {
   const newForm = new PopupWithForm("#modal-profile", (evt) => {
     evt.preventDefault();
-    userInfo.editProfile();
+    const userData = userInfo.editProfile();
+    api.setProfile({ name: userData.name, about: userData.about });
   });
 
   const userInfo = new UserInfo({
     userName: user,
     userAbout: user,
   });
-
   userInfo.getUserInfo();
 
   if (document.querySelector(".form") === null) {
@@ -104,7 +104,7 @@ export const renderProfileForm = () => {
   new FormValidator(configObj, "#modal-profile").enableValidation();
 };
 
-const userInfo = api.getUser().then((data) => {
+api.getUser().then((data) => {
   const profileName = document.querySelector(".profile__name");
   profileName.textContent = data.name;
 

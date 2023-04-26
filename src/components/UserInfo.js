@@ -32,5 +32,12 @@ export default class UserInfo {
     document.querySelector(".profile__name").textContent = this._getProfileName;
     document.querySelector(".profile__about-me").textContent =
       this._getProfileAbout;
+
+    const userData = {
+      name: this._getProfileName,
+      about: this._getProfileAbout,
+    };
+
+    return userData;
   };
 }
