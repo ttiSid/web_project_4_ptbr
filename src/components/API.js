@@ -7,6 +7,24 @@ export default class Api {
       (this.authorization = options.headers.authorization);
   }
 
+  getUser() {
+    return fetch(`${this.baseUrl}/users/me`, {
+      headers: {
+        authorization: this.authorization,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: {

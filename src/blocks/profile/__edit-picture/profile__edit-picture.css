@@ -1,14 +1,11 @@
 .profile__edit-picture {
   background-color: transparent;
-  height: 120px;
-  width: 120px;
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
   padding: 0;
   margin: 0;
   border: none;
-}
-
-.profile__edit-picture {
   background-image: url("../../../images/icons/Edit-picture.svg");
   background-position: center;
   background-repeat: no-repeat;

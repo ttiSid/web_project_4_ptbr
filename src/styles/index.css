@@ -28,6 +28,8 @@
 
 /*  PROFILE */
 @import url("../blocks/profile/profile.css");
+/*  PROFILE IMG CONTAINER */
+@import url("../blocks/profile-img-container/profile-img-container.css");
 /*  PROFILE IMAGE   */
 @import url("../blocks/profile/__image/profile__image.css");
 /*  PROFILE NAME    */

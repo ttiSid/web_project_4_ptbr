@@ -23,10 +23,8 @@ import { api } from "./components/API.js";
   });
 })();
 
-const InitialCards = api.getInitialCards();
-
 /*  Inserindo cards existentes ao DOM */
-
+const InitialCards = api.getInitialCards();
 const cardList = new Section(
   {
     items: InitialCards.then((data) => {
@@ -84,7 +82,7 @@ export const renderCardForm = () => {
 };
 
 /*  Abrindo formulário de perfil */
-
+const user = api.getUser();
 export const renderProfileForm = () => {
   const newForm = new PopupWithForm("#modal-profile", (evt) => {
     evt.preventDefault();
@@ -92,8 +90,8 @@ export const renderProfileForm = () => {
   });
 
   const userInfo = new UserInfo({
-    userName: ".profile__name",
-    userAbout: ".profile__about-me",
+    userName: user,
+    userAbout: user,
   });
 
   userInfo.getUserInfo();
@@ -105,3 +103,14 @@ export const renderProfileForm = () => {
   }
   new FormValidator(configObj, "#modal-profile").enableValidation();
 };
+
+const userInfo = api.getUser().then((data) => {
+  const profileName = document.querySelector(".profile__name");
+  profileName.textContent = data.name;
+
+  const profileAbout = document.querySelector(".profile__about-me");
+  profileAbout.textContent = data.about;
+
+  const profilePicture = document.querySelector(".profile__image");
+  profilePicture.src = data.avatar;
+});

@@ -1,7 +1,7 @@
 export default class UserInfo {
   constructor({ userName, userAbout }) {
-    this.userName = document.querySelector(userName);
-    this.userAbout = document.querySelector(userAbout);
+    this.userName = userName;
+    this.userAbout = userAbout;
   }
 
   /* Coleta os dados do perfil */
@@ -15,8 +15,10 @@ export default class UserInfo {
       .querySelector("#modal-profile")
       .content.querySelector("#profile-description");
 
-    this._getProfileName.value = this.userName.textContent;
-    this._getProfileAbout.value = this.userAbout.textContent;
+    this._getProfileName.value =
+      document.querySelector(".profile__name").textContent;
+    this._getProfileAbout.value =
+      document.querySelector(".profile__about-me").textContent;
   };
 
   /* Edita os dados do perfil */
@@ -27,7 +29,8 @@ export default class UserInfo {
       "#profile-description"
     ).value;
 
-    this.userName.textContent = this._getProfileName;
-    this.userAbout.textContent = this._getProfileAbout;
+    document.querySelector(".profile__name").textContent = this._getProfileName;
+    document.querySelector(".profile__about-me").textContent =
+      this._getProfileAbout;
   };
 }

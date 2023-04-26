@@ -17,20 +17,22 @@
       </header>
       <main class="container">
         <section class="profile">
-          <button class="profile__edit-picture">
-            <img
-              class="profile__image"
-              src="<%=require('./images/image-profile.jpg')%>"
-              alt="profile image"
-            />
-          </button>
+          <div class="profile-img-container">
+            <button class="profile__edit-picture">
+              <img
+                class="profile__image"
+                src="<%=require('./images/image-profile.jpg')%>"
+                alt="profile image"
+              />
+            </button>
+          </div>
           <div class="wrap">
             <div class="wrap-profile">
               <div class="wrap-edit-profile">
-                <h1 class="profile__name">Jacques Cousteau</h1>
+                <h1 class="profile__name"></h1>
                 <button class="profile__edit-button"></button>
               </div>
-              <h2 class="profile__about-me">Explorar</h2>
+              <h2 class="profile__about-me"></h2>
             </div>
             <button class="profile__add-card-button"></button>
           </div>
