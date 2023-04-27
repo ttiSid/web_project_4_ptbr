@@ -56,6 +56,7 @@ export const renderCardForm = () => {
   const newForm = new PopupWithForm("#modal-card", (evt) => {
     evt.preventDefault();
     const cardData = newForm._getInputValues();
+    api.postNewCard({ name: cardData.name, link: cardData.link });
     const newCard = new Card(
       {
         data: cardData,
