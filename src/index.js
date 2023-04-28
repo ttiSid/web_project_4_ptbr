@@ -24,7 +24,7 @@ import { api } from "./components/API.js";
 })();
 
 /*  Inserindo cards existentes ao DOM */
-const InitialCards = api.getInitialCards();
+const InitialCards = api.getCards();
 const cardList = new Section(
   {
     items: InitialCards.then((data) => {

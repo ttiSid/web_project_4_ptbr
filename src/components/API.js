@@ -25,7 +25,7 @@ export default class Api {
       });
   }
 
-  getInitialCards() {
+  getCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: {
         authorization: this.authorization,
