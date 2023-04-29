@@ -4,6 +4,8 @@ export default class Card {
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._isLiked = data.isLiked;
+    this._cardOwner = data.owner._id;
+    this._owner = "a0995efe3421bff16c16b482";
     this.handleCardClick = handleCardClick;
   }
 
@@ -42,6 +44,10 @@ export default class Card {
     deleteBtn.addEventListener("click", () => {
       deleteBtn.parentElement.remove();
     });
+
+    if (this._cardOwner === this._owner) {
+      deleteBtn.classList.remove("picture-card__delete-btn_hidden");
+    }
 
     const likeBtn = this._element.querySelector(".picture-card__like-btn");
     likeBtn.addEventListener("click", () => {
