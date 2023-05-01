@@ -46,7 +46,7 @@ export default class Card {
   _setEventListeners() {
     const deleteBtn = this._element.querySelector(".picture-card__delete-btn");
     deleteBtn.addEventListener("click", () => {
-      deleteBtn.parentElement.remove();
+      /*  deleteBtn.parentElement.remove(); */
       this._deleteCard();
     });
 

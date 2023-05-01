@@ -24,10 +24,10 @@ import { api } from "./components/API.js";
 })();
 
 /*  Inserindo cards existentes ao DOM */
-const InitialCards = api.getCards();
+
 const cardList = new Section(
   {
-    items: InitialCards.then((data) => {
+    items: api.getCards().then((data) => {
       return data;
     }),
     renderer: (item) => {
@@ -43,7 +43,18 @@ const cardList = new Section(
             setLike(evt, item);
           },
           deleteCard: () => {
-            api.deleteCard(item._id);
+            const deleteConfirmation = new PopupWithForm(
+              "#modal-card-delete",
+              () => {
+                api.deleteCard(item._id).then(() => {
+                  setTimeout(() => {
+                    document.querySelector(".general-modal").remove();
+                    cardElement.remove();
+                  }, 100);
+                });
+              }
+            );
+            isSingleForm(deleteConfirmation);
           },
         },
         ".card"
@@ -56,9 +67,7 @@ const cardList = new Section(
   cardContainer
 );
 
-if (document.querySelector(".picture-card") === null) {
-  cardList.renderer();
-}
+cardList.renderer();
 
 /*  Abrindo formulário de card */
 
@@ -87,15 +96,29 @@ export const renderCardForm = () => {
               setLike(evt, item);
             },
             deleteCard: () => {
-              api.deleteCard(item._id);
+              const deleteConfirmation = new PopupWithForm(
+                "#modal-card-delete",
+                () => {
+                  api.deleteCard(item._id).then(() => {
+                    setTimeout(() => {
+                      document.querySelector(".general-modal").remove();
+                      cardElement.remove();
+                    }, 100);
+                  });
+                }
+              );
+              isSingleForm(deleteConfirmation);
             },
           },
           ".card"
         );
-        const cardContainer = document.querySelector(".pictures-container");
+
         const cardElement = card.createCard();
         card._hasOwnerLiked();
+
+        const cardContainer = document.querySelector(".pictures-container");
         cardContainer.prepend(cardElement);
+
         setTimeout(() => {
           document.querySelector(".general-modal").remove();
         }, 500);
@@ -153,13 +176,11 @@ function isSingleForm(newForm) {
 function setLike(evt, item) {
   if (evt.target.classList.contains("picture-card__like-btn_active")) {
     evt.target.classList.remove("picture-card__like-btn_active");
-    api.removeLike(item._id).then(() => {
-      evt.target.nextElementSibling.textContent = --item.likes.length;
-    });
+    evt.target.nextElementSibling.textContent = --item.likes.length;
+    api.removeLike(item._id);
   } else {
     evt.target.classList.add("picture-card__like-btn_active");
-    api.addLike(item._id).then(() => {
-      evt.target.nextElementSibling.textContent = ++item.likes.length;
-    });
+    evt.target.nextElementSibling.textContent = ++item.likes.length;
+    api.addLike(item._id);
   }
 }
