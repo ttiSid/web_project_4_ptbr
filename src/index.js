@@ -21,9 +21,14 @@ import { api } from "./components/API.js";
   editProfile.addEventListener("click", () => {
     renderProfileForm();
   });
+
+  const editProfilePic = document.querySelector(".profile__edit-picture");
+  editProfilePic.addEventListener("click", () => {
+    renderPictureForm();
+  });
 })();
 
-/*  Inserindo cards existentes ao DOM */
+/*  Recebendo cards existentes da API ao DOM */
 
 const cardList = new Section(
   {
@@ -121,7 +126,7 @@ export const renderCardForm = () => {
 
         setTimeout(() => {
           document.querySelector(".general-modal").remove();
-        }, 500);
+        }, 100);
       });
   });
   isSingleForm(newForm);
@@ -139,7 +144,7 @@ export const renderProfileForm = () => {
       evt.submitter.innerText = "Salvo";
       setTimeout(() => {
         document.querySelector(".general-modal").remove();
-      }, 500);
+      }, 100);
     });
   });
   isSingleForm(newForm);
@@ -154,6 +159,27 @@ export const renderProfileForm = () => {
   new FormValidator(configObj, "#modal-profile").enableValidation();
 };
 
+/* Alterando foto de perfil */
+
+const renderPictureForm = () => {
+  const newForm = new PopupWithForm("#modal-profile-picture", (evt) => {
+    evt.preventDefault();
+    const url = newForm._getInputUrl();
+
+    api.setProfilePic(url).then((res) => {
+      const profilePicture = document.querySelector(".profile__image");
+      profilePicture.src = res.avatar;
+      setTimeout(() => {
+        document.querySelector(".general-modal").remove();
+      }, 100);
+    });
+  });
+  isSingleForm(newForm);
+  new FormValidator(configObj, "#modal-profile-picture").enableValidation();
+};
+
+/* Recebendo dados de usuário atualizados ao iniciar  */
+
 api.getUser().then((data) => {
   const profileName = document.querySelector(".profile__name");
   profileName.textContent = data.name;
@@ -165,6 +191,8 @@ api.getUser().then((data) => {
   profilePicture.src = data.avatar;
 });
 
+/* Valida se existe outro formulário aberto antes de adicionar um novo */
+
 function isSingleForm(newForm) {
   if (document.querySelector(".form") === null) {
     const mainContainer = document.querySelector(".pictures-container");
@@ -172,6 +200,8 @@ function isSingleForm(newForm) {
     mainContainer.append(newFormElement);
   }
 }
+
+/* Altera os estados de like */
 
 function setLike(evt, item) {
   if (evt.target.classList.contains("picture-card__like-btn_active")) {

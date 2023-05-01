@@ -145,6 +145,28 @@ export default class Api {
         console.log(err);
       });
   }
+
+  setProfilePic(avatar) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this.authorization,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: avatar,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }
 
 const api = new Api({

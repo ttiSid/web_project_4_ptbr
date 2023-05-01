@@ -42,6 +42,14 @@ export default class PopupWithForm extends Popup {
     return this._cardData;
   }
 
+  _getInputUrl() {
+    this._avatar = this._formElement.querySelector(
+      "#profile-url-picture"
+    ).value;
+
+    return this._avatar;
+  }
+
   setEventListeners() {
     super.setEventListeners();
 
