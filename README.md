@@ -10,8 +10,7 @@ O projeto está tendo como intuito praticar e consolidar os conceitos de respons
 
 - Javascript modular e Programação Orientada a Objetos.
 
-A implementação do projeto no GitHub Pages está prevista para a próxima Sprint.
-Em breve o link estará disponível.
+Confira o projeto: [EUA Afora](https://ttisid.github.io/web_project_4_ptbr/)
 
 ### Última atualização
 
