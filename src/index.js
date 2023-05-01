@@ -40,18 +40,10 @@ const cardList = new Section(
             popupImg.setEventListeners();
           },
           like: (evt) => {
-            if (
-              evt.target.classList.contains("picture-card__like-btn_active")
-            ) {
-              //deletar o like API e DOM
-              evt.target.classList.remove("picture-card__like-btn_active");
-              evt.target.nextElementSibling.textContent--;
-              api.removeLike(item._id);
-            } else {
-              evt.target.classList.add("picture-card__like-btn_active");
-              evt.target.nextElementSibling.textContent++;
-              api.addLike(item._id);
-            }
+            setLike(evt, item);
+          },
+          deleteCard: () => {
+            api.deleteCard(item._id);
           },
         },
         ".card"
@@ -59,42 +51,57 @@ const cardList = new Section(
       const cardElement = card.createCard();
       card._hasOwnerLiked();
       cardList.addItem(cardElement);
-      console.log(item);
     },
   },
   cardContainer
 );
-cardList.renderer();
+
+if (document.querySelector(".picture-card") === null) {
+  cardList.renderer();
+}
 
 /*  Abrindo formulário de card */
 
 export const renderCardForm = () => {
   const newForm = new PopupWithForm("#modal-card", (evt) => {
     evt.preventDefault();
+    evt.submitter.innerText = "Salvando...";
     const cardData = newForm._getInputValues();
-    api.postNewCard({ name: cardData.name, link: cardData.link });
-    const newCard = new Card(
-      {
-        data: cardData,
-        handleCardClick: (name, link) => {
-          const popupImg = new PopupWithImage("#popup");
-          popupImg.open(name, link);
-          popupImg.setEventListeners();
-        },
-      },
-      ".card"
-    );
-    const cardContainer = document.querySelector(".pictures-container");
-    const cardElement = newCard.createCard();
-    cardContainer.prepend(cardElement);
+    api
+      .postNewCard({
+        name: cardData.name,
+        link: cardData.link,
+      })
+      .then((item) => {
+        evt.submitter.innerText = "Salvo";
+
+        const card = new Card(
+          {
+            data: item,
+            handleCardClick: (name, link) => {
+              const popupImg = new PopupWithImage("#popup");
+              popupImg.open(name, link);
+              popupImg.setEventListeners();
+            },
+            like: (evt) => {
+              setLike(evt, item);
+            },
+            deleteCard: () => {
+              api.deleteCard(item._id);
+            },
+          },
+          ".card"
+        );
+        const cardContainer = document.querySelector(".pictures-container");
+        const cardElement = card.createCard();
+        card._hasOwnerLiked();
+        cardContainer.prepend(cardElement);
+        setTimeout(() => {
+          document.querySelector(".general-modal").remove();
+        }, 500);
+      });
   });
-
-  if (document.querySelector(".form") === null) {
-    const mainContainer = document.querySelector(".pictures-container");
-    const newFormElement = newForm.open();
-    mainContainer.append(newFormElement);
-  }
-
+  isSingleForm(newForm);
   new FormValidator(configObj, "#modal-card").enableValidation();
 };
 
@@ -103,21 +110,24 @@ const user = api.getUser();
 export const renderProfileForm = () => {
   const newForm = new PopupWithForm("#modal-profile", (evt) => {
     evt.preventDefault();
+    evt.submitter.innerText = "Salvando...";
     const userData = userInfo.editProfile();
-    api.setProfile({ name: userData.name, about: userData.about });
+    api.setProfile({ name: userData.name, about: userData.about }).then(() => {
+      evt.submitter.innerText = "Salvo";
+      setTimeout(() => {
+        document.querySelector(".general-modal").remove();
+      }, 500);
+    });
   });
+  isSingleForm(newForm);
 
   const userInfo = new UserInfo({
     userName: user,
     userAbout: user,
   });
+
   userInfo.getUserInfo();
 
-  if (document.querySelector(".form") === null) {
-    const mainContainer = document.querySelector(".pictures-container");
-    const newFormElement = newForm.open();
-    mainContainer.append(newFormElement);
-  }
   new FormValidator(configObj, "#modal-profile").enableValidation();
 };
 
@@ -131,3 +141,25 @@ api.getUser().then((data) => {
   const profilePicture = document.querySelector(".profile__image");
   profilePicture.src = data.avatar;
 });
+
+function isSingleForm(newForm) {
+  if (document.querySelector(".form") === null) {
+    const mainContainer = document.querySelector(".pictures-container");
+    const newFormElement = newForm.open();
+    mainContainer.append(newFormElement);
+  }
+}
+
+function setLike(evt, item) {
+  if (evt.target.classList.contains("picture-card__like-btn_active")) {
+    evt.target.classList.remove("picture-card__like-btn_active");
+    api.removeLike(item._id).then(() => {
+      evt.target.nextElementSibling.textContent = --item.likes.length;
+    });
+  } else {
+    evt.target.classList.add("picture-card__like-btn_active");
+    api.addLike(item._id).then(() => {
+      evt.target.nextElementSibling.textContent = ++item.likes.length;
+    });
+  }
+}

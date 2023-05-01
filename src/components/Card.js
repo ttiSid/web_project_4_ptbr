@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({ data, handleCardClick, like }, cardSelector) {
+  constructor({ data, handleCardClick, like, deleteCard }, cardSelector) {
     this._title = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -8,6 +8,7 @@ export default class Card {
     this._cardOwner = data.owner._id;
     this._owner = "a0995efe3421bff16c16b482";
     this.handleCardClick = handleCardClick;
+    this._deleteCard = deleteCard;
   }
 
   /*  Recolhe e clona o template do card*/
@@ -46,6 +47,7 @@ export default class Card {
     const deleteBtn = this._element.querySelector(".picture-card__delete-btn");
     deleteBtn.addEventListener("click", () => {
       deleteBtn.parentElement.remove();
+      this._deleteCard();
     });
 
     if (this._cardOwner === this._owner) {
