@@ -39,11 +39,27 @@ const cardList = new Section(
             popupImg.open(name, link);
             popupImg.setEventListeners();
           },
+          like: (evt) => {
+            if (
+              evt.target.classList.contains("picture-card__like-btn_active")
+            ) {
+              //deletar o like API e DOM
+              evt.target.classList.remove("picture-card__like-btn_active");
+              evt.target.nextElementSibling.textContent--;
+              api.removeLike(item._id);
+            } else {
+              evt.target.classList.add("picture-card__like-btn_active");
+              evt.target.nextElementSibling.textContent++;
+              api.addLike(item._id);
+            }
+          },
         },
         ".card"
       );
       const cardElement = card.createCard();
+      card._hasOwnerLiked();
       cardList.addItem(cardElement);
+      console.log(item);
     },
   },
   cardContainer

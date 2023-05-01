@@ -1,9 +1,10 @@
 export default class Card {
-  constructor({ data, handleCardClick }, cardSelector) {
+  constructor({ data, handleCardClick, like }, cardSelector) {
     this._title = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._isLiked = data.isLiked;
+    this._likes = data.likes;
+    this._like = like;
     this._cardOwner = data.owner._id;
     this._owner = "a0995efe3421bff16c16b482";
     this.handleCardClick = handleCardClick;
@@ -33,6 +34,8 @@ export default class Card {
     ).alt = `${this._title} image`;
     this._element.querySelector(".picture-card__description").textContent =
       this._title;
+    this._element.querySelector(".picture-card__likes").textContent =
+      this._likes.length;
 
     return this._element;
   }
@@ -50,9 +53,9 @@ export default class Card {
     }
 
     const likeBtn = this._element.querySelector(".picture-card__like-btn");
-    likeBtn.addEventListener("click", () => {
-      likeBtn.classList.toggle("picture-card__like-btn_active");
-      return this._like();
+
+    likeBtn.addEventListener("click", (evt) => {
+      this._like(evt);
     });
 
     const cardImage = this._element.querySelector(".picture-card__image");
@@ -61,7 +64,16 @@ export default class Card {
     });
   }
 
-  _like() {
-    this._isLiked = !this._isLiked;
-  }
+  _hasOwnerLiked = () => {
+    const isLiked = this._likes.find((isLiked) => {
+      return this._owner === isLiked._id;
+    });
+
+    if (isLiked === undefined) {
+      const likeBtn = this._element.querySelector(".picture-card__like-btn");
+      likeBtn.classList.remove("picture-card__like-btn_active");
+    }
+
+    return isLiked;
+  };
 }
