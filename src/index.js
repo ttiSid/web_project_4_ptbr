@@ -1,13 +1,14 @@
-import "./styles/index.css";
+import "./page/index.css";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
-import { configObj } from "./components/utils.js";
+import { configObj } from "./utils/constants.js";
 import Section from "./components/Section.js";
-import { cardContainer } from "./components/utils.js";
+import { cardContainer } from "./utils/constants.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import UserInfo from "./components/UserInfo.js";
-import { api } from "./components/API.js";
+import { api } from "./components/Api.js";
+import PopupWithConfirmation from "./components/PopupWithConfirmation";
 
 /*  Adicionando EventListeners aos botões de adicionar e editar perfil  */
 
@@ -48,18 +49,7 @@ const cardList = new Section(
             setLike(evt, item);
           },
           deleteCard: () => {
-            const deleteConfirmation = new PopupWithForm(
-              "#modal-card-delete",
-              () => {
-                api.deleteCard(item._id).then(() => {
-                  setTimeout(() => {
-                    document.querySelector(".general-modal").remove();
-                    cardElement.remove();
-                  }, 100);
-                });
-              }
-            );
-            isSingleForm(deleteConfirmation);
+            deleteCard(item, cardElement);
           },
         },
         ".card"
@@ -81,54 +71,50 @@ export const renderCardForm = () => {
     evt.preventDefault();
     evt.submitter.innerText = "Salvando...";
     const cardData = newForm._getInputValues();
-    api
-      .postNewCard({
-        name: cardData.name,
-        link: cardData.link,
-      })
-      .then((item) => {
-        evt.submitter.innerText = "Salvo";
 
-        const card = new Card(
-          {
-            data: item,
-            handleCardClick: (name, link) => {
-              const popupImg = new PopupWithImage("#popup");
-              popupImg.open(name, link);
-              popupImg.setEventListeners();
+    const newCard = new Section(
+      {
+        items: api
+          .postNewCard({
+            name: cardData.name,
+            link: cardData.link,
+          })
+          .then((data) => {
+            return [data];
+          }),
+        renderer: (item) => {
+          const card = new Card(
+            {
+              data: item,
+              handleCardClick: (name, link) => {
+                const popupImg = new PopupWithImage("#popup");
+                popupImg.open(name, link);
+                popupImg.setEventListeners();
+              },
+              like: (evt) => {
+                setLike(evt, item);
+              },
+              deleteCard: () => {
+                deleteCard(item, cardElement);
+              },
             },
-            like: (evt) => {
-              setLike(evt, item);
-            },
-            deleteCard: () => {
-              const deleteConfirmation = new PopupWithForm(
-                "#modal-card-delete",
-                () => {
-                  api.deleteCard(item._id).then(() => {
-                    setTimeout(() => {
-                      document.querySelector(".general-modal").remove();
-                      cardElement.remove();
-                    }, 100);
-                  });
-                }
-              );
-              isSingleForm(deleteConfirmation);
-            },
-          },
-          ".card"
-        );
+            ".card"
+          );
+          const cardElement = card.createCard();
+          const cardContent = document.querySelector(".pictures-container");
+          cardContent.prepend(cardElement);
 
-        const cardElement = card.createCard();
-        card._hasOwnerLiked();
-
-        const cardContainer = document.querySelector(".pictures-container");
-        cardContainer.prepend(cardElement);
-
-        setTimeout(() => {
-          document.querySelector(".general-modal").remove();
-        }, 100);
-      });
+          card._hasOwnerLiked();
+        },
+      },
+      cardContainer
+    );
+    newCard.renderer();
+    setTimeout(() => {
+      document.querySelector(".general-modal").remove();
+    }, 100);
   });
+
   isSingleForm(newForm);
   new FormValidator(configObj, "#modal-card").enableValidation();
 };
@@ -213,4 +199,21 @@ function setLike(evt, item) {
     evt.target.nextElementSibling.textContent = ++item.likes.length;
     api.addLike(item._id);
   }
+}
+
+/* Deleta os cards */
+
+function deleteCard(item, cardElement) {
+  const deleteConfirmation = new PopupWithConfirmation(
+    "#modal-card-delete",
+    () => {
+      api.deleteCard(item._id).then(() => {
+        setTimeout(() => {
+          document.querySelector(".general-modal").remove();
+          cardElement.remove();
+        }, 100);
+      });
+    }
+  );
+  isSingleForm(deleteConfirmation);
 }
