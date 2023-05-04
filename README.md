@@ -10,9 +10,30 @@ O projeto está tendo como intuito praticar e consolidar os conceitos de respons
 
 - Javascript modular e Programação Orientada a Objetos.
 
+- Webpack
+
 Confira o projeto: [EUA Afora](https://ttisid.github.io/web_project_4_ptbr/)
 
-### Última atualização
+### Últimas atualizações:
 
-- Refatoração e transição do código para Programação Orientada a Objetos;
-- Divisão do código por módulos;
+- Consumo de API para:
+  - Receber, adicionar e excluir Cards;
+  - Adicionar e remover curtidas;
+  - Editar título, descrição e foto de perfil;
+- Implementação de um modal para confirmação de exclusão de um Card;
+- Organização do repositório.
+
+## Funcionalidades
+
+- Edição de perfil
+- Adição e remoção de cards
+- Adição e remoção de curtidas
+- Cross device
+
+## Stack utilizada
+
+**Front-end:** HTML, CSS, JavaScript, Webpack, Babel.
+
+#### Dependências:
+
+Você pode consultar as dependências do projeto no arquivo _package.json_
