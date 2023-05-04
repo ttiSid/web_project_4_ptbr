@@ -1,14 +1,14 @@
 import "./page/index.css";
-import Card from "./components/Card.js";
-import FormValidator from "./components/FormValidator.js";
-import { configObj } from "./utils/constants.js";
-import Section from "./components/Section.js";
-import { cardContainer } from "./utils/constants.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import UserInfo from "./components/UserInfo.js";
-import { api } from "./components/Api.js";
-import PopupWithConfirmation from "./components/PopupWithConfirmation";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import { configObj } from "../utils/constants.js";
+import Section from "../components/Section.js";
+import { cardContainer } from "../utils/constants.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import { api } from "../components/Api.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
 /*  Adicionando EventListeners aos botões de adicionar e editar perfil  */
 
