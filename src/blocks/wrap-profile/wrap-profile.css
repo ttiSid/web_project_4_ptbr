@@ -6,6 +6,7 @@
 
 @media screen and (max-width: 767px) {
   .wrap-profile {
+    align-items: center;
     gap: 0.87rem;
   }
 }

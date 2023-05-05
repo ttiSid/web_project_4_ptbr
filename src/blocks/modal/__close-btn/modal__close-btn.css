@@ -22,5 +22,6 @@
     height: 26px;
     top: -1.87rem;
     right: -1.87rem;
+    object-fit: cover;
   }
 }
